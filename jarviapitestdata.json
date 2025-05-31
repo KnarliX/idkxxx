@@ -9,19 +9,18 @@
     "status": "online",
     "uptime": {
       "formatted": {
-        "weeks": 0,
         "days": 0,
         "hours": 0,
-        "minutes": 5,
-        "seconds": 4
+        "minutes": 2,
+        "seconds": 32
       },
-      "ms": 304441
+      "ms": 152481
     },
     "servers": 2,
     "users": 23
   },
   "music": {
-    "nodes_connected": 1,
+    "nodes_connected": 2,
     "total_nodes": 2,
     "active_players": 0,
     "total_players": 0,
@@ -29,16 +28,15 @@
       {
         "id": 1,
         "name": "NODE-1",
-        "connected": false,
+        "connected": true,
         "uptime": {
           "formatted": {
-            "weeks": 0,
-            "days": 0,
-            "hours": 0,
-            "minutes": 0,
-            "seconds": 0
+            "days": 12,
+            "hours": 21,
+            "minutes": 50,
+            "seconds": 42
           },
-          "ms": 0
+          "ms": 1115442439
         }
       },
       {
@@ -47,13 +45,12 @@
         "connected": true,
         "uptime": {
           "formatted": {
-            "weeks": 1,
-            "days": 5,
+            "days": 12,
             "hours": 21,
-            "minutes": 37,
-            "seconds": 6
+            "minutes": 50,
+            "seconds": 42
           },
-          "ms": 1114626719
+          "ms": 1115442454
         }
       }
     ]
