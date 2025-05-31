@@ -8,15 +8,20 @@
     "avatar": "https://cdn.discordapp.com/avatars/1333994486979887186/ae9788e76911bc529ac864ae1fd50067.webp?size=512",
     "status": "online",
     "uptime": {
-      "formatted": "0d 0h 0m 9s",
-      "seconds": 200,
-      "started_at": "2025-05-24T21:42:09.773Z"
+      "formatted": {
+        "weeks": 0,
+        "days": 0,
+        "hours": 0,
+        "minutes": 5,
+        "seconds": 4
+      },
+      "ms": 304441
     },
     "servers": 2,
-    "users": 22
+    "users": 23
   },
   "music": {
-    "nodes_connected": 2,
+    "nodes_connected": 1,
     "total_nodes": 2,
     "active_players": 0,
     "total_players": 0,
@@ -24,32 +29,42 @@
       {
         "id": 1,
         "name": "NODE-1",
-        "connected": true,
+        "connected": false,
         "uptime": {
-          "formatted": "6d 13h 47m 1s",
-          "seconds": 568021
+          "formatted": {
+            "weeks": 0,
+            "days": 0,
+            "hours": 0,
+            "minutes": 0,
+            "seconds": 0
+          },
+          "ms": 0
         }
       },
       {
         "id": 2,
         "name": "NODE-2",
-        "connected": false,
+        "connected": true,
         "uptime": {
-          "formatted": "6d 13h 47m 1s",
-          "seconds": 568022
+          "formatted": {
+            "weeks": 1,
+            "days": 5,
+            "hours": 21,
+            "minutes": 37,
+            "seconds": 6
+          },
+          "ms": 1114626719
         }
       }
     ]
   },
   "system": {
-    "platform": "linux",
     "nodejs": {
       "version": "v20.18.1"
-    },
-    "discord_js_version": "14.19.3"
+    }
   },
   "database": {
-    "status": "connected",
+    "status": "true",
     "connected_db": 4,
     "total_db": 4
   }
