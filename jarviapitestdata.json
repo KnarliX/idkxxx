@@ -9,8 +9,8 @@
     "status": "online",
     "uptime": {
       "formatted": {
-        "days": 0,
-        "hours": 0,
+        "days": 3,
+        "hours": 5,
         "minutes": 2,
         "seconds": 32
       },
