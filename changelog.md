@@ -1,6 +1,6 @@
 # 🚀 Jarvi v0.1.2 — Full Changelog
 
-> Released: **16 July 2025**  
+> Released: **18 July 2025**  
 > Stage: `BETA`  
 > Status: **LIVE**  
 
