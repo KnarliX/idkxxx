@@ -57,7 +57,7 @@ Introducing Jarvi's **personal playlist system** — create and manage custom mu
 | `import-playlist <id or link>` | Import from ID or supported platforms |
 | `playlists` | Show your playlists |
 | `pplay <id>` | Play a playlist |
-| `remove-song <id> <index>` | Remove song by index |
+| `remove-song <id> <index>` | Remove song by index (eg. remove-song 3dfbkm 3) |
 | `playlist-songs <id>` | View playlist contents |
 
 ---
