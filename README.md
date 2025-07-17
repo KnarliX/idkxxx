@@ -53,7 +53,7 @@ Introducing Jarvi's **personal playlist system** — create and manage custom mu
 | `create-playlist <name>` | Create a new playlist |
 | `add-to-playlist <id> <song/url>` | Add songs via name or URL |
 | `delete-playlist <id>` | Delete a playlist |
-| `edit-playlist <id> name `|` description <value>` | Update name/desc |
+| `edit-playlist <id> name description <value>` | Update name/desc |
 | `import-playlist <id or link>` | Import from ID or supported platforms |
 | `playlists` | Show your playlists |
 | `pplay <id>` | Play a playlist |
