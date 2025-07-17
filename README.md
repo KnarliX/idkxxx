@@ -92,5 +92,5 @@ Introducing Jarvi's **personal playlist system** — create and manage custom mu
 
 ---
 
-> Maintained with ☕, love & late nights by the Jarvi Team.  
-> Stay tuned for **v0.1.3** — dropping 🔜
+> Maintained with ☕, love & late nights by the [KnarliX](https://github.com/KnarliX).  
+> Stay tuned for next dropping 🔜
