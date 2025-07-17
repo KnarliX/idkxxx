@@ -15,7 +15,7 @@ Major backend cleanup + improved stability.
 
 ## 🐛 Bug Fixes
 
-- 🔁 **Double response bug**: Fixed issue where commands like `.help` used to respond **twice**
+- 🔁 **Double response bug**: Fixed issue where commands like `help` used to respond **twice**
 - ❌ **Error spam on invalid commands**: Cleaned up error handling logic
 - ⚠️ **Non-existent command fallback**: Now properly shows “Unknown Command” message
 - 📎 Minor cleanup: Removed unused aliases and old debug logs
@@ -41,7 +41,7 @@ Major backend cleanup + improved stability.
 Introducing Jarvi's **personal playlist system** — create and manage custom music playlists.
 
 ### 📂 How It Works:
-- Each playlist gets a **unique ID** (e.g. `abc123`)
+- Each playlist gets a **unique ID** (e.g. `abc123`, `3dfbkm`)
 - IDs are stored per-user
 - Works across servers
 
