@@ -1,0 +1,518 @@
+{
+  "responseContext": {
+    "serviceTrackingParams": [
+      {
+        "service": "GFEEDBACK",
+        "params": [
+          {
+            "key": "ipcc",
+            "value": "0"
+          },
+          {
+            "key": "is_viewed_live",
+            "value": "False"
+          },
+          {
+            "key": "is_alc_surface",
+            "value": "false"
+          },
+          {
+            "key": "logged_in",
+            "value": "0"
+          },
+          {
+            "key": "e",
+            "value": "9405987,23804281,23986022,24004644,24077241,24135942,24166867,24290153,24407446,24453989,24459436,24699899,39325854,39328892,51010235,51037346,51037351,51063643,51072748,51095478,51098299,51115164,51115184,51136528,51141472,51152050,51178318,51178327,51178348,51178353,51183910,51204329,51222973,51225397,51227037,51237842,51242448,51256074,51272458,51285052,51300176,51300241,51311027,51311040,51313109,51313765,51313767,51314158,51338524,51340662,51341226,51342857,51349914,51353393,51354567,51355201,51355912,51362071,51366423,51367489,51372971,51375205,51389629,51404237,51404808,51404810,51404953,51407632,51414985,51432294,51432560,51433499,51440725,51441710,51444283,51444846,51445757,51447191,51448081,51448332,51452479,51452495,51452785,51454385,51456423,51456629,51457461,51459425,51462020,51463530,51466924,51467525,51467676,51468322,51470315,51471785,51472205,51473810,51475686,51477496,51478688,51478868,51484222,51486035,51488778,51490267,51490331,51491127,51491754,51492548,51492990,51493576,51494655,51495567,51500051,51501787,51502939,51505436,51506539,51506553,51506681,51509183,51509315,51509613,51509946,51510317,51510345,51510888,51511440,51511950,51512805,51513707,51518806,51518819,51521954,51522022,51522358,51522681,51524018,51524086,51524403,51526267,51526700,51528608,51529199,51529706,51529759,51530225,51530495,51530538,51530732,51532253,51533384,51533389,51533396,51533405,51533568,51534328,51534333,51534340,51534349,51534356,51534669,51535423,51535728,51538053,51538090,51538888,51539470,51539855,51539928,51540717,51541345,51541547,51543099,51544153,51544587,51544597,51545646,51545969,51546294,51546375,51546508,51546675,51546981,51547388,51547832,51548165,51549695,51550012,51550137,51550965,51551820,51552469,51552476,51552689,51553441,51554438,51554591,51557753,51560387,51560388,51561515,51561685,51561935,51565115,51565485,51565681,51566100,51566279,51567119,51567394,51568224,51569217,51569219,51569682,51571391,51572571,51574295,51575029,51575063,51576009,51576104,51576894,51578765,51579607,51580968,51581852,51582128,51582714,51582725,51583227,51583567,51583625,51584631,51584832,51585113,51586115,100670017"
+          },
+          {
+            "key": "visitor_data",
+            "value": "CgtjVnJZbDBrUERtRSiygKbFBjIKCgJJThIEGgAgPw%3D%3D"
+          }
+        ]
+      },
+      {
+        "service": "CSI",
+        "params": [
+          {
+            "key": "c",
+            "value": "WEB"
+          },
+          {
+            "key": "cver",
+            "value": "2.20250821.07.00"
+          },
+          {
+            "key": "yt_li",
+            "value": "0"
+          },
+          {
+            "key": "GetPlayer_rid",
+            "value": "0xd7700f0938c80f1c"
+          }
+        ]
+      },
+      {
+        "service": "GUIDED_HELP",
+        "params": [
+          {
+            "key": "logged_in",
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "service": "ECATCHER",
+        "params": [
+          {
+            "key": "client.version",
+            "value": "2.20250821"
+          },
+          {
+            "key": "client.name",
+            "value": "WEB"
+          }
+        ]
+      }
+    ],
+    "maxAgeSeconds": 0,
+    "mainAppWebResponseContext": {
+      "loggedOut": true,
+      "trackingParam": "kx_fmPxhoPZRXJOEPjHxXcCEsXwOfSgeAeeOgKm9oR2-4ozRgkuMsNLBwOcCE59TDtslLKPQ-SS"
+    },
+    "webResponseContextExtensionData": {
+      "hasDecorated": true
+    }
+  },
+  "playabilityStatus": {
+    "status": "LIVE_STREAM_OFFLINE",
+    "reason": "Premieres in 9 hours",
+    "playableInEmbed": true,
+    "liveStreamability": {
+      "liveStreamabilityRenderer": {
+        "videoId": "4cXBsCSNm1Y",
+        "offlineSlate": {
+          "liveStreamOfflineSlateRenderer": {
+            "scheduledStartTime": "1755973800",
+            "mainText": {
+              "runs": [
+                {
+                  "text": "Premieres in "
+                },
+                {
+                  "text": "9 hours"
+                }
+              ]
+            },
+            "subtitleText": {
+              "simpleText": "23 August at 11:30 GMT-7"
+            },
+            "thumbnail": {
+              "thumbnails": [
+                {
+                  "url": "https://i.ytimg.com/vi/4cXBsCSNm1Y/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLDUiDSa-aoU_JJQAEkVOV9tE9CpzA",
+                  "width": 168,
+                  "height": 94
+                },
+                {
+                  "url": "https://i.ytimg.com/vi/4cXBsCSNm1Y/hqdefault.jpg?sqp=-oaymwEiCMQBEG5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLBszV7ONio2uiwKYC1O2NMg3oij3A",
+                  "width": 196,
+                  "height": 110
+                },
+                {
+                  "url": "https://i.ytimg.com/vi/4cXBsCSNm1Y/hqdefault.jpg?sqp=-oaymwEjCPYBEIoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLBzN_i61UF_B1lNw5U8TSl96zI6BA",
+                  "width": 246,
+                  "height": 138
+                },
+                {
+                  "url": "https://i.ytimg.com/vi/4cXBsCSNm1Y/hqdefault.jpg?sqp=-oaymwEjCNACELwBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLAUDEbXIY8feB0eRG10AZxGwgNR6g",
+                  "width": 336,
+                  "height": 188
+                },
+                {
+                  "url": "https://i.ytimg.com/vi/4cXBsCSNm1Y/maxresdefault.jpg",
+                  "width": 1920,
+                  "height": 1080
+                }
+              ]
+            },
+            "offlineSlateStyle": "OFFLINE_SLATE_STYLE_ABSTRACT"
+          }
+        },
+        "pollDelayMs": "15000"
+      }
+    },
+    "miniplayer": {
+      "miniplayerRenderer": {
+        "playbackMode": "PLAYBACK_MODE_ALLOW",
+        "enableStashedPlayback": false
+      }
+    },
+    "contextParams": "Q0FFU0FnZ0M="
+  },
+  "heartbeatParams": {
+    "softFailOnError": true,
+    "heartbeatServerData": "GAEgAA==",
+    "heartbeatAttestationConfig": {
+      "requiresAttestation": true
+    }
+  },
+  "videoDetails": {
+    "videoId": "4cXBsCSNm1Y",
+    "title": "23 August 2025",
+    "lengthSeconds": "0",
+    "channelId": "UCJl0pvyZ09cYyBFXBuRtg4g",
+    "isOwnerViewing": false,
+    "shortDescription": "",
+    "isCrawlable": true,
+    "thumbnail": {
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/4cXBsCSNm1Y/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLDUiDSa-aoU_JJQAEkVOV9tE9CpzA",
+          "width": 168,
+          "height": 94
+        },
+        {
+          "url": "https://i.ytimg.com/vi/4cXBsCSNm1Y/hqdefault.jpg?sqp=-oaymwEiCMQBEG5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLBszV7ONio2uiwKYC1O2NMg3oij3A",
+          "width": 196,
+          "height": 110
+        },
+        {
+          "url": "https://i.ytimg.com/vi/4cXBsCSNm1Y/hqdefault.jpg?sqp=-oaymwEjCPYBEIoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLBzN_i61UF_B1lNw5U8TSl96zI6BA",
+          "width": 246,
+          "height": 138
+        },
+        {
+          "url": "https://i.ytimg.com/vi/4cXBsCSNm1Y/hqdefault.jpg?sqp=-oaymwEjCNACELwBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLAUDEbXIY8feB0eRG10AZxGwgNR6g",
+          "width": 336,
+          "height": 188
+        },
+        {
+          "url": "https://i.ytimg.com/vi/4cXBsCSNm1Y/maxresdefault.jpg",
+          "width": 1920,
+          "height": 1080
+        }
+      ]
+    },
+    "isUpcoming": true,
+    "allowRatings": true,
+    "viewCount": "0",
+    "author": "Laura",
+    "isLowLatencyLiveStream": false,
+    "isPrivate": false,
+    "isUnpluggedCorpus": false,
+    "latencyClass": "MDE_STREAM_OPTIMIZATIONS_RENDERER_LATENCY_NORMAL",
+    "isLiveContent": false
+  },
+  "microformat": {
+    "playerMicroformatRenderer": {
+      "thumbnail": {
+        "thumbnails": [
+          {
+            "url": "https://i.ytimg.com/vi/4cXBsCSNm1Y/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        ]
+      },
+      "embed": {
+        "iframeUrl": "https://www.youtube.com/embed/4cXBsCSNm1Y",
+        "width": 1280,
+        "height": 720
+      },
+      "title": {
+        "simpleText": "23 August 2025"
+      },
+      "ownerProfileUrl": "http://www.youtube.com/@laura-benchod69-h6b2i",
+      "externalChannelId": "UCJl0pvyZ09cYyBFXBuRtg4g",
+      "isFamilySafe": true,
+      "availableCountries": [
+        "AD",
+        "AE",
+        "AF",
+        "AG",
+        "AI",
+        "AL",
+        "AM",
+        "AO",
+        "AQ",
+        "AR",
+        "AS",
+        "AT",
+        "AU",
+        "AW",
+        "AX",
+        "AZ",
+        "BA",
+        "BB",
+        "BD",
+        "BE",
+        "BF",
+        "BG",
+        "BH",
+        "BI",
+        "BJ",
+        "BL",
+        "BM",
+        "BN",
+        "BO",
+        "BQ",
+        "BR",
+        "BS",
+        "BT",
+        "BV",
+        "BW",
+        "BY",
+        "BZ",
+        "CA",
+        "CC",
+        "CD",
+        "CF",
+        "CG",
+        "CH",
+        "CI",
+        "CK",
+        "CL",
+        "CM",
+        "CN",
+        "CO",
+        "CR",
+        "CU",
+        "CV",
+        "CW",
+        "CX",
+        "CY",
+        "CZ",
+        "DE",
+        "DJ",
+        "DK",
+        "DM",
+        "DO",
+        "DZ",
+        "EC",
+        "EE",
+        "EG",
+        "EH",
+        "ER",
+        "ES",
+        "ET",
+        "FI",
+        "FJ",
+        "FK",
+        "FM",
+        "FO",
+        "FR",
+        "GA",
+        "GB",
+        "GD",
+        "GE",
+        "GF",
+        "GG",
+        "GH",
+        "GI",
+        "GL",
+        "GM",
+        "GN",
+        "GP",
+        "GQ",
+        "GR",
+        "GS",
+        "GT",
+        "GU",
+        "GW",
+        "GY",
+        "HK",
+        "HM",
+        "HN",
+        "HR",
+        "HT",
+        "HU",
+        "ID",
+        "IE",
+        "IL",
+        "IM",
+        "IN",
+        "IO",
+        "IQ",
+        "IR",
+        "IS",
+        "IT",
+        "JE",
+        "JM",
+        "JO",
+        "JP",
+        "KE",
+        "KG",
+        "KH",
+        "KI",
+        "KM",
+        "KN",
+        "KP",
+        "KR",
+        "KW",
+        "KY",
+        "KZ",
+        "LA",
+        "LB",
+        "LC",
+        "LI",
+        "LK",
+        "LR",
+        "LS",
+        "LT",
+        "LU",
+        "LV",
+        "LY",
+        "MA",
+        "MC",
+        "MD",
+        "ME",
+        "MF",
+        "MG",
+        "MH",
+        "MK",
+        "ML",
+        "MM",
+        "MN",
+        "MO",
+        "MP",
+        "MQ",
+        "MR",
+        "MS",
+        "MT",
+        "MU",
+        "MV",
+        "MW",
+        "MX",
+        "MY",
+        "MZ",
+        "NA",
+        "NC",
+        "NE",
+        "NF",
+        "NG",
+        "NI",
+        "NL",
+        "NO",
+        "NP",
+        "NR",
+        "NU",
+        "NZ",
+        "OM",
+        "PA",
+        "PE",
+        "PF",
+        "PG",
+        "PH",
+        "PK",
+        "PL",
+        "PM",
+        "PN",
+        "PR",
+        "PS",
+        "PT",
+        "PW",
+        "PY",
+        "QA",
+        "RE",
+        "RO",
+        "RS",
+        "RU",
+        "RW",
+        "SA",
+        "SB",
+        "SC",
+        "SD",
+        "SE",
+        "SG",
+        "SH",
+        "SI",
+        "SJ",
+        "SK",
+        "SL",
+        "SM",
+        "SN",
+        "SO",
+        "SR",
+        "SS",
+        "ST",
+        "SV",
+        "SX",
+        "SY",
+        "SZ",
+        "TC",
+        "TD",
+        "TF",
+        "TG",
+        "TH",
+        "TJ",
+        "TK",
+        "TL",
+        "TM",
+        "TN",
+        "TO",
+        "TR",
+        "TT",
+        "TV",
+        "TW",
+        "TZ",
+        "UA",
+        "UG",
+        "UM",
+        "US",
+        "UY",
+        "UZ",
+        "VA",
+        "VC",
+        "VE",
+        "VG",
+        "VI",
+        "VN",
+        "VU",
+        "WF",
+        "WS",
+        "YE",
+        "YT",
+        "ZA",
+        "ZM",
+        "ZW"
+      ],
+      "isUnlisted": false,
+      "hasYpcMetadata": false,
+      "viewCount": "0",
+      "category": "People & Blogs",
+      "publishDate": "2025-08-23T00:53:58-07:00",
+      "ownerChannelName": "Laura",
+      "liveBroadcastDetails": {
+        "isLiveNow": false,
+        "startTimestamp": "2025-08-23T18:30:00+00:00"
+      },
+      "uploadDate": "2025-08-23T00:53:58-07:00",
+      "isShortsEligible": false,
+      "externalVideoId": "4cXBsCSNm1Y",
+      "likeCount": "0",
+      "canonicalUrl": "https://www.youtube.com/watch?v=4cXBsCSNm1Y"
+    }
+  },
+  "trackingParams": "CAAQu2kiEwj4ooODxqCPAxV38BYFHVecMoA=",
+  "adBreakHeartbeatParams": "Q0FBJTNE",
+  "frameworkUpdates": {
+    "entityBatchUpdate": {
+      "mutations": [
+        {
+          "entityKey": "Eg0KCzRjWEJzQ1NObTFZIPYBKAE%3D",
+          "type": "ENTITY_MUTATION_TYPE_REPLACE",
+          "payload": {
+            "offlineabilityEntity": {
+              "key": "Eg0KCzRjWEJzQ1NObTFZIPYBKAE%3D",
+              "addToOfflineButtonState": "ADD_TO_OFFLINE_BUTTON_STATE_UNKNOWN"
+            }
+          }
+        }
+      ],
+      "timestamp": {
+        "seconds": "1755938866",
+        "nanos": 421869708
+      }
+    }
+  }
+}

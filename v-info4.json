@@ -1,0 +1,543 @@
+{
+  "responseContext": {
+    "serviceTrackingParams": [
+      {
+        "service": "GFEEDBACK",
+        "params": [
+          {
+            "key": "is_viewed_live",
+            "value": "False"
+          },
+          {
+            "key": "is_alc_surface",
+            "value": "false"
+          },
+          {
+            "key": "ipcc",
+            "value": "0"
+          },
+          {
+            "key": "logged_in",
+            "value": "0"
+          },
+          {
+            "key": "e",
+            "value": "23804281,23986024,24004644,24077241,24166867,24290153,24407444,24453989,24490089,24699899,39325854,39328892,51010235,51037342,51037351,51063643,51072748,51095478,51098299,51115164,51115184,51136527,51141472,51152050,51178310,51178335,51178344,51178355,51183909,51204329,51222973,51225397,51227037,51237842,51242448,51256074,51272458,51285052,51300176,51300241,51311027,51311040,51313109,51313765,51313767,51314158,51338524,51340662,51341226,51342857,51349914,51353393,51354569,51355201,51355912,51362038,51366423,51367487,51372971,51375205,51389629,51404238,51404808,51404810,51404953,51414983,51432294,51432560,51433501,51440727,51441712,51444218,51444283,51444845,51445757,51447191,51448334,51452479,51452493,51452785,51454385,51456423,51456628,51457461,51459468,51462020,51463532,51466924,51467524,51467676,51468320,51470315,51471785,51472205,51475686,51476898,51477494,51478868,51484222,51486035,51489567,51490267,51490331,51491127,51491754,51492546,51492990,51493576,51494655,51495294,51495566,51499796,51500051,51501787,51503079,51505436,51506681,51507273,51509183,51509315,51509613,51510319,51510888,51511440,51511952,51513707,51517118,51518808,51518819,51521954,51522021,51522678,51524018,51524403,51526700,51528608,51529198,51529705,51529759,51530225,51530495,51530538,51530733,51532253,51533384,51533393,51533398,51533405,51533568,51534326,51534335,51534338,51534347,51534354,51534669,51535423,51535728,51538053,51538092,51538888,51539470,51539928,51540075,51540717,51541345,51541435,51543034,51543099,51544153,51544587,51544597,51545646,51545901,51545969,51546294,51546375,51546508,51546674,51546981,51547388,51547832,51548165,51549695,51550012,51550137,51550965,51551318,51551820,51552471,51552476,51552689,51553443,51554439,51555221,51555851,51557755,51560387,51560388,51560471,51561515,51561685,51561771,51561935,51565115,51565373,51565681,51566073,51566100,51566279,51566863,51567119,51567395,51568224,51569217,51569219,51569684,51570819,51571392,51571875,51572571,51575027,51576009,51576104,51576891,51576948,51578615,51578765,51579347,51579607,51580968,51582714,51583565,51583627,51584631,51584832,51585113,51585433,51585872,51586115,51587878,100670017,100670347"
+          },
+          {
+            "key": "visitor_data",
+            "value": "CgtrRVFzRG1SN19zbyiKgKbFBjIKCgJJThIEGgAgQw%3D%3D"
+          }
+        ]
+      },
+      {
+        "service": "CSI",
+        "params": [
+          {
+            "key": "c",
+            "value": "WEB"
+          },
+          {
+            "key": "cver",
+            "value": "2.20250821.07.00"
+          },
+          {
+            "key": "yt_li",
+            "value": "0"
+          },
+          {
+            "key": "GetPlayer_rid",
+            "value": "0x252bff1817e3826f"
+          }
+        ]
+      },
+      {
+        "service": "GUIDED_HELP",
+        "params": [
+          {
+            "key": "logged_in",
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "service": "ECATCHER",
+        "params": [
+          {
+            "key": "client.version",
+            "value": "2.20250821"
+          },
+          {
+            "key": "client.name",
+            "value": "WEB"
+          }
+        ]
+      }
+    ],
+    "maxAgeSeconds": 0,
+    "mainAppWebResponseContext": {
+      "loggedOut": true,
+      "trackingParam": "kx_fmPxhoPZRDC6RrmwMjTaCT6eBXv0PjM1MHlmwwLJ8fozRgkuMsNLBwOcCE59TDtslLKPQ-SS"
+    },
+    "webResponseContextExtensionData": {
+      "hasDecorated": true
+    }
+  },
+  "playabilityStatus": {
+    "status": "LIVE_STREAM_OFFLINE",
+    "reason": "This live event will begin in 26 hours.",
+    "playableInEmbed": true,
+    "liveStreamability": {
+      "liveStreamabilityRenderer": {
+        "videoId": "t2v9Ze37fTo",
+        "offlineSlate": {
+          "liveStreamOfflineSlateRenderer": {
+            "scheduledStartTime": "1756033200",
+            "mainText": {
+              "runs": [
+                {
+                  "text": "Live in "
+                },
+                {
+                  "text": "26 hours"
+                }
+              ]
+            },
+            "subtitleText": {
+              "simpleText": "24 August at 18:00 GMT+7"
+            },
+            "thumbnail": {
+              "thumbnails": [
+                {
+                  "url": "https://i.ytimg.com/vi/t2v9Ze37fTo/hqdefault.jpg?v=68a6a4d8&sqp=CIz_pcUG-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLCZ8WUxv3vdNTCXYAOhcG0Oe8jDKQ",
+                  "width": 168,
+                  "height": 94
+                },
+                {
+                  "url": "https://i.ytimg.com/vi/t2v9Ze37fTo/hqdefault.jpg?v=68a6a4d8&sqp=CIz_pcUG-oaymwEiCMQBEG5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLDdhBHX0PVAhAV8h70VXJ9Gwk5bgg",
+                  "width": 196,
+                  "height": 110
+                },
+                {
+                  "url": "https://i.ytimg.com/vi/t2v9Ze37fTo/hqdefault.jpg?v=68a6a4d8&sqp=CIz_pcUG-oaymwEjCPYBEIoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLAjO-IIf41tY2I49JpXBPhBTuYVXQ",
+                  "width": 246,
+                  "height": 138
+                },
+                {
+                  "url": "https://i.ytimg.com/vi/t2v9Ze37fTo/hqdefault.jpg?v=68a6a4d8&sqp=CIz_pcUG-oaymwEjCNACELwBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLBlQjDsLa_gP9bqs9BBrryAH3zjrA",
+                  "width": 336,
+                  "height": 188
+                },
+                {
+                  "url": "https://i.ytimg.com/vi/t2v9Ze37fTo/maxresdefault.jpg?v=68a6a4d8",
+                  "width": 1920,
+                  "height": 1080
+                }
+              ]
+            },
+            "offlineSlateStyle": "OFFLINE_SLATE_STYLE_ABSTRACT"
+          }
+        },
+        "pollDelayMs": "15000"
+      }
+    },
+    "miniplayer": {
+      "miniplayerRenderer": {
+        "playbackMode": "PLAYBACK_MODE_ALLOW",
+        "enableStashedPlayback": false
+      }
+    },
+    "contextParams": "Q0FFU0FnZ0M="
+  },
+  "heartbeatParams": {
+    "softFailOnError": true,
+    "heartbeatServerData": "GAEgAA==",
+    "heartbeatAttestationConfig": {
+      "requiresAttestation": true
+    }
+  },
+  "videoDetails": {
+    "videoId": "t2v9Ze37fTo",
+    "title": "🔴 [EN] FFWS SEA 2025 FALL | Battle Royale - Week 2 Day 3",
+    "lengthSeconds": "0",
+    "keywords": [
+      "free fire",
+      "garena free fire",
+      "FFWS",
+      "FFWS2023",
+      "moshi free fire",
+      "highlight free fire",
+      "live free fire",
+      "free fire one shot",
+      "loud free fire",
+      "nobru ff",
+      "wag free fire",
+      "RRQ",
+      "RRQ free fire",
+      "buriram free fire",
+      "dew free fire",
+      "FLCN",
+      "FFWSGF2024",
+      "FFWS2025",
+      "EWC"
+    ],
+    "channelId": "UCBT9wRDMPzL-Fp9Fw4DCIVg",
+    "isOwnerViewing": false,
+    "shortDescription": "🌟 FFWS SEA 2025 Fall begins! The best teams from Indonesia 🇮🇩, Vietnam 🇻🇳, Thailand 🇹🇭 and Malaysia 🇲🇾 compete in both Battle Royale and Clash Squad modes with the goal of qualifying for the Grand Finals in Bangkok, Thailand! \n💥 Who will Strike and Rise to get the lion's share of a $400,000 USD prize pool?\n\n📺 Tune on the following dates: \n\n🎯 Battle Royale Mode \n📅 Week 1 = 15-17 Aug\n📅 Week 2 = 22-24 Aug\n📅 Week 3 = 30-31 Aug\n📅 Week 4 = 6-7 Sep \n📅 Week 5 = 13-14 Sep \n📅 Week 6 = 20-21 Sep \n🏆 BR Grand Final = 5 Oct \n\n💣 Clash Squad Mode \n📌 Days 1 & 2 = 28-29 Aug\n📌 Days 3 & 4 = 4-5 Sep \n📌 Days 5, 6, 7 = 10-12 Sep \n📌 Days 8 & 9 = 18-19 Sep \n🏆 CS Grand Final: 4 Oct \n\n#FreeFireEsports 🔥 #FFWSSEA 🌍 #FFWS2025 🚀 #StrikeAndRise",
+    "isCrawlable": true,
+    "thumbnail": {
+      "thumbnails": [
+        {
+          "url": "https://i.ytimg.com/vi/t2v9Ze37fTo/hqdefault.jpg?v=68a6a4d8&sqp=CIz_pcUG-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLCZ8WUxv3vdNTCXYAOhcG0Oe8jDKQ",
+          "width": 168,
+          "height": 94
+        },
+        {
+          "url": "https://i.ytimg.com/vi/t2v9Ze37fTo/hqdefault.jpg?v=68a6a4d8&sqp=CIz_pcUG-oaymwEiCMQBEG5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLDdhBHX0PVAhAV8h70VXJ9Gwk5bgg",
+          "width": 196,
+          "height": 110
+        },
+        {
+          "url": "https://i.ytimg.com/vi/t2v9Ze37fTo/hqdefault.jpg?v=68a6a4d8&sqp=CIz_pcUG-oaymwEjCPYBEIoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLAjO-IIf41tY2I49JpXBPhBTuYVXQ",
+          "width": 246,
+          "height": 138
+        },
+        {
+          "url": "https://i.ytimg.com/vi/t2v9Ze37fTo/hqdefault.jpg?v=68a6a4d8&sqp=CIz_pcUG-oaymwEjCNACELwBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLBlQjDsLa_gP9bqs9BBrryAH3zjrA",
+          "width": 336,
+          "height": 188
+        },
+        {
+          "url": "https://i.ytimg.com/vi/t2v9Ze37fTo/maxresdefault.jpg?v=68a6a4d8",
+          "width": 1920,
+          "height": 1080
+        }
+      ]
+    },
+    "isUpcoming": true,
+    "allowRatings": true,
+    "viewCount": "0",
+    "author": "Free Fire Esports Official",
+    "isLowLatencyLiveStream": false,
+    "isPrivate": false,
+    "isUnpluggedCorpus": false,
+    "latencyClass": "MDE_STREAM_OPTIMIZATIONS_RENDERER_LATENCY_NORMAL",
+    "isLiveContent": true
+  },
+  "microformat": {
+    "playerMicroformatRenderer": {
+      "thumbnail": {
+        "thumbnails": [
+          {
+            "url": "https://i.ytimg.com/vi/t2v9Ze37fTo/maxresdefault.jpg?v=68a6a4d8",
+            "width": 1280,
+            "height": 720
+          }
+        ]
+      },
+      "embed": {
+        "iframeUrl": "https://www.youtube.com/embed/t2v9Ze37fTo",
+        "width": 480,
+        "height": 360
+      },
+      "title": {
+        "simpleText": "🔴 [EN] FFWS SEA 2025 FALL | Battle Royale - Week 2 Day 3"
+      },
+      "description": {
+        "simpleText": "🌟 FFWS SEA 2025 Fall begins! The best teams from Indonesia 🇮🇩, Vietnam 🇻🇳, Thailand 🇹🇭 and Malaysia 🇲🇾 compete in both Battle Royale and Clash Squad modes with the goal of qualifying for the Grand Finals in Bangkok, Thailand! \n💥 Who will Strike and Rise to get the lion's share of a $400,000 USD prize pool?\n\n📺 Tune on the following dates: \n\n🎯 Battle Royale Mode \n📅 Week 1 = 15-17 Aug\n📅 Week 2 = 22-24 Aug\n📅 Week 3 = 30-31 Aug\n📅 Week 4 = 6-7 Sep \n📅 Week 5 = 13-14 Sep \n📅 Week 6 = 20-21 Sep \n🏆 BR Grand Final = 5 Oct \n\n💣 Clash Squad Mode \n📌 Days 1 & 2 = 28-29 Aug\n📌 Days 3 & 4 = 4-5 Sep \n📌 Days 5, 6, 7 = 10-12 Sep \n📌 Days 8 & 9 = 18-19 Sep \n🏆 CS Grand Final: 4 Oct \n\n#FreeFireEsports 🔥 #FFWSSEA 🌍 #FFWS2025 🚀 #StrikeAndRise"
+      },
+      "lengthSeconds": "0",
+      "ownerProfileUrl": "http://www.youtube.com/@freefireesportsofficial",
+      "externalChannelId": "UCBT9wRDMPzL-Fp9Fw4DCIVg",
+      "isFamilySafe": true,
+      "availableCountries": [
+        "AD",
+        "AE",
+        "AF",
+        "AG",
+        "AI",
+        "AL",
+        "AM",
+        "AO",
+        "AQ",
+        "AR",
+        "AS",
+        "AT",
+        "AU",
+        "AW",
+        "AX",
+        "AZ",
+        "BA",
+        "BB",
+        "BD",
+        "BE",
+        "BF",
+        "BG",
+        "BH",
+        "BI",
+        "BJ",
+        "BL",
+        "BM",
+        "BN",
+        "BO",
+        "BQ",
+        "BR",
+        "BS",
+        "BT",
+        "BV",
+        "BW",
+        "BY",
+        "BZ",
+        "CA",
+        "CC",
+        "CD",
+        "CF",
+        "CG",
+        "CH",
+        "CI",
+        "CK",
+        "CL",
+        "CM",
+        "CN",
+        "CO",
+        "CR",
+        "CU",
+        "CV",
+        "CW",
+        "CX",
+        "CY",
+        "CZ",
+        "DE",
+        "DJ",
+        "DK",
+        "DM",
+        "DO",
+        "DZ",
+        "EC",
+        "EE",
+        "EG",
+        "EH",
+        "ER",
+        "ES",
+        "ET",
+        "FI",
+        "FJ",
+        "FK",
+        "FM",
+        "FO",
+        "FR",
+        "GA",
+        "GB",
+        "GD",
+        "GE",
+        "GF",
+        "GG",
+        "GH",
+        "GI",
+        "GL",
+        "GM",
+        "GN",
+        "GP",
+        "GQ",
+        "GR",
+        "GS",
+        "GT",
+        "GU",
+        "GW",
+        "GY",
+        "HK",
+        "HM",
+        "HN",
+        "HR",
+        "HT",
+        "HU",
+        "ID",
+        "IE",
+        "IL",
+        "IM",
+        "IN",
+        "IO",
+        "IQ",
+        "IR",
+        "IS",
+        "IT",
+        "JE",
+        "JM",
+        "JO",
+        "JP",
+        "KE",
+        "KG",
+        "KH",
+        "KI",
+        "KM",
+        "KN",
+        "KP",
+        "KR",
+        "KW",
+        "KY",
+        "KZ",
+        "LA",
+        "LB",
+        "LC",
+        "LI",
+        "LK",
+        "LR",
+        "LS",
+        "LT",
+        "LU",
+        "LV",
+        "LY",
+        "MA",
+        "MC",
+        "MD",
+        "ME",
+        "MF",
+        "MG",
+        "MH",
+        "MK",
+        "ML",
+        "MM",
+        "MN",
+        "MO",
+        "MP",
+        "MQ",
+        "MR",
+        "MS",
+        "MT",
+        "MU",
+        "MV",
+        "MW",
+        "MX",
+        "MY",
+        "MZ",
+        "NA",
+        "NC",
+        "NE",
+        "NF",
+        "NG",
+        "NI",
+        "NL",
+        "NO",
+        "NP",
+        "NR",
+        "NU",
+        "NZ",
+        "OM",
+        "PA",
+        "PE",
+        "PF",
+        "PG",
+        "PH",
+        "PK",
+        "PL",
+        "PM",
+        "PN",
+        "PR",
+        "PS",
+        "PT",
+        "PW",
+        "PY",
+        "QA",
+        "RE",
+        "RO",
+        "RS",
+        "RU",
+        "RW",
+        "SA",
+        "SB",
+        "SC",
+        "SD",
+        "SE",
+        "SG",
+        "SH",
+        "SI",
+        "SJ",
+        "SK",
+        "SL",
+        "SM",
+        "SN",
+        "SO",
+        "SR",
+        "SS",
+        "ST",
+        "SV",
+        "SX",
+        "SY",
+        "SZ",
+        "TC",
+        "TD",
+        "TF",
+        "TG",
+        "TH",
+        "TJ",
+        "TK",
+        "TL",
+        "TM",
+        "TN",
+        "TO",
+        "TR",
+        "TT",
+        "TV",
+        "TW",
+        "TZ",
+        "UA",
+        "UG",
+        "UM",
+        "US",
+        "UY",
+        "UZ",
+        "VA",
+        "VC",
+        "VE",
+        "VG",
+        "VI",
+        "VN",
+        "VU",
+        "WF",
+        "WS",
+        "YE",
+        "YT",
+        "ZA",
+        "ZM",
+        "ZW"
+      ],
+      "isUnlisted": false,
+      "hasYpcMetadata": false,
+      "viewCount": "0",
+      "category": "Gaming",
+      "publishDate": "2025-08-13T11:58:10-07:00",
+      "ownerChannelName": "Free Fire Esports Official",
+      "liveBroadcastDetails": {
+        "isLiveNow": false,
+        "startTimestamp": "2025-08-24T11:00:00+00:00"
+      },
+      "uploadDate": "2025-08-13T11:58:10-07:00",
+      "isShortsEligible": false,
+      "externalVideoId": "t2v9Ze37fTo",
+      "likeCount": "67",
+      "canonicalUrl": "https://www.youtube.com/watch?v=t2v9Ze37fTo"
+    }
+  },
+  "trackingParams": "CAAQu2kiEwj8-YnwxaCPAxX98hYFHaMKLx8=",
+  "adBreakHeartbeatParams": "Q0FBJTNE",
+  "frameworkUpdates": {
+    "entityBatchUpdate": {
+      "mutations": [
+        {
+          "entityKey": "Eg0KC3QydjlaZTM3ZlRvIPYBKAE%3D",
+          "type": "ENTITY_MUTATION_TYPE_REPLACE",
+          "payload": {
+            "offlineabilityEntity": {
+              "key": "Eg0KC3QydjlaZTM3ZlRvIPYBKAE%3D",
+              "addToOfflineButtonState": "ADD_TO_OFFLINE_BUTTON_STATE_UNKNOWN"
+            }
+          }
+        }
+      ],
+      "timestamp": {
+        "seconds": "1755938826",
+        "nanos": 679085608
+      }
+    }
+  }
+}
