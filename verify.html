@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Account | Dreamer's Land</title>
+    <meta name="description" content="Verify your YouTube subscription to unlock exclusive Discord roles and access to Dreamer's Land community features.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔐</text></svg>">
+    
+    
+    <!-- TailwindCSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="/cdn/css/main.css">
+    
+    <!-- Preload -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" as="style">
+    <link rel="preload" href="/cdn/js/main.js" as="script">
+</head>
+<body class="min-h-screen flex flex-col bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900">
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+    
+    <!-- Initial Page Loading -->
+    <div id="page-loading" class="fixed inset-0 z-50 flex items-center justify-center glass">
+        <div class="text-center">
+            <div class="lottie-container mb-4">
+                <iframe src="https://lottie.host/embed/fb90fbf7-0928-49a6-9d48-00b84fe11218/AkOk2t6qZZ.lottie" 
+                        class="lottie-animation border-0 bg-transparent" 
+                        style="width: 100%; height: auto;"></iframe>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Connecting Overlay -->
+    <div id="connecting-overlay" class="loading-overlay">
+        <div class="loading-content">
+            <div id="connecting-animation" class="lottie-container mb-4">
+                <!-- Animation will be loaded here -->
+                <iframe src="https://lottie.host/embed/c95393c4-c53b-4440-ac46-a20d9d9231d9/6CMVfvGzXR.lottie" 
+                        class="lottie-animation border-0 bg-transparent" 
+                        style="width: 100%; height: auto;"></iframe>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Connecting to YouTube</h3>
+            <p class="text-gray-300">If you are not redirected, refresh the page</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="glass border-b border-white/10 sticky top-0 z-40">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <img id="guild-icon" src="" alt="Server Icon" class="w-8 h-8 rounded-full avatar" onerror="this.style.display='none'">
+                    <h1 class="text-xl font-bold text-white">
+                        <span id="guild-name">Dreamer's Land</span>
+                    </h1>
+                </div>
+                
+                <!-- Theme Toggle -->
+                <div class="theme-switch">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="theme-slider">
+                        <div class="star-field">
+                            <div class="mini-star mini-star-1"></div>
+                            <div class="mini-star mini-star-2"></div>
+                            <div class="mini-star mini-star-3"></div>
+                        </div>
+                        <div class="moon-dot moon-dot-1"></div>
+                        <div class="moon-dot moon-dot-2"></div>
+                        <div class="moon-dot moon-dot-3"></div>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex items-center justify-center px-4 py-8">
+        <div class="max-w-2xl w-full">
+            <!-- Main Verification Card -->
+            <div class="glass-card p-8 text-center slide-up">
+                <!-- User Avatar -->
+                <div class="mb-6">
+                    <img id="user-avatar" src="" alt="User Avatar" class="w-20 h-20 mx-auto rounded-full avatar shadow-lg border-4 border-blue-500/30" onerror="this.style.display='none'">
+                </div>
+                
+                <!-- Title -->
+                <h1 class="text-3xl sm:text-4xl font-bold text-white mb-2">
+                    Welcome, <span id="user-display-name" class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Dear Dreamer</span>!
+                </h1>
+                
+                <!-- Subtitle -->
+                <p class="text-gray-300 text-lg mb-8">
+                    Connect your YouTube account to verify your subscription and unlock exclusive Discord roles.
+                </p>
+                
+                <!-- User Info -->
+                <div class="glass p-4 rounded-lg mb-8">
+                    <div class="flex items-center justify-center space-x-2 text-gray-300">
+                        <svg class="w-5 h-5 discord" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09-.01-.02-.04-.03-.07-.03-1.5.26-2.93.71-4.27 1.33-.01 0-.02.01-.03.02-2.72 4.07-3.47 8.03-3.1 11.95 0 .02.01.04.03.05 1.8 1.32 3.53 2.12 5.24 2.65.03.01.06 0 .07-.02.4-.55.76-1.13 1.07-1.74.02-.04 0-.08-.04-.09-.57-.22-1.11-.48-1.64-.78-.04-.02-.04-.08-.01-.11.11-.08.22-.17.32-.25.02-.02.05-.02.07-.01 3.44 1.57 7.15 1.57 10.55 0 .02-.01.05-.01.07.01.11.09.21.17.32.25.04.03.04.09-.01.11-.52.31-1.07.56-1.64.78-.04.01-.05.06-.04.09.32.61.68 1.19 1.07 1.74.03.01.06.02.09.01 1.72-.53 3.45-1.33 5.25-2.65.02-.01.03-.03.03-.05.44-4.53-.73-8.46-3.1-11.95-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12 0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12 0 1.17-.83 2.12-1.89 2.12z"/>
+                        </svg>
+                        <span id="user-discord-tag">Loading...</span>
+                    </div>
+                </div>
+                
+                <!-- OAuth Button -->
+                <a id="oauth-button" href="#"
+                   class="relative group inline-flex items-center justify-center px-7 py-3 
+                          text-lg font-semibold text-white rounded-2xl 
+                          shadow-[0_0_20px_rgba(0,0,0,0.5)] transition-all duration-300 ease-out overflow-hidden
+                          bg-gradient-to-r from-red-500 via-pink-500 to-purple-600 
+                          hover:scale-105 hover:shadow-[0_0_35px_rgba(255,80,120,0.7)] active:scale-95
+                          border border-white/10">
+
+                  <!-- Animated Neon Border -->
+                  <span class="absolute inset-0 rounded-2xl border-2 border-transparent 
+                               group-hover:border-red-300/40 transition-all duration-500"></span>
+
+                  <!-- Background Glow -->
+                  <span class="absolute inset-0 opacity-0 group-hover:opacity-30 blur-2xl 
+                               bg-gradient-to-r from-pink-400 via-red-500 to-purple-500 
+                               transition-opacity duration-700"></span>
+
+                  <!-- Shiny Line Sweep -->
+                  <span class="absolute left-[-100%] top-0 w-full h-full 
+                               bg-gradient-to-r from-transparent via-white/40 to-transparent 
+                               transition-all duration-700 ease-in-out 
+                               group-hover:left-[100%]"></span>
+
+                  <!-- Google Logo inside circle -->
+                  <span class="relative z-10 flex items-center justify-center w-7 h-7 mr-3 rounded-full bg-white shadow-md">
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Google_Favicon_2025.svg"
+                           alt="Google"
+                           class="w-5 h-5" />
+                  </span>
+
+                  <!-- Button Text -->
+                  <span class="relative z-10">Connect your YouTube account</span>
+                </a>
+                
+                <!-- Error Message -->
+                <div id="error-message" 
+                     class="error-card hidden relative px-5 py-4 rounded-xl text-center 
+                            bg-gradient-to-r from-red-900/40 via-red-800/20 to-red-900/40 
+                            border border-red-500/40 shadow-lg 
+                            backdrop-blur-md transition-all duration-500">
+
+                    <!-- Glow Layer -->
+                    <span class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-30 blur-xl 
+                                 bg-gradient-to-r from-red-500/30 to-pink-600/30 
+                                 transition-opacity duration-500"></span>
+
+                    <!-- Icon + Title -->
+                    <div class="flex items-center justify-center mb-2 animate-pulse">
+                        <svg class="w-7 h-7 text-red-400 mr-2 drop-shadow-md" 
+                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                  d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <h3 class="text-lg font-semibold text-red-400 tracking-wide">
+                            Verification Error
+                        </h3>
+                    </div>
+
+                    <!-- Error Text -->
+                    <p class="text-red-300 text-sm">
+                        Invalid or expired token. Please try again.
+                    </p>
+                </div>
+                
+            <!-- YouTube Channel Info -->
+            <div class="mt-8 glass-card p-6">
+                <h3 class="text-xl font-semibold text-white mb-4 text-center"></h3>
+                <div class="flex items-center space-x-4">
+                    <img id="youtube-logo" src="" alt="YouTube Channel" class="w-16 h-16 rounded-full" onerror="this.style.display='none'">
+                    <div class="flex-1">
+                        <h4 class="text-lg font-semibold text-white" id="youtube-channel">Janvi Dreamer</h4>
+                        <p class="text-gray-300" id="youtube-subscribers">N/A</p>
+                    </div>
+                    <a href="https://www.youtube.com/channel/UCa4-5c2gCYxqummRhmh6V4Q" id="youtube-subscribe-button" class="inline-flex items-center px-4 py-2 rounded-xl font-medium text-white 
+                          bg-gradient-to-r from-red-500 to-pink-600 
+                          hover:from-red-600 hover:to-pink-700 
+                          shadow-md hover:shadow-lg transition-all duration-300 active:scale-95">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                        Subscribe
+                    </a>
+                </div>
+                <p class="text-gray-400 text-sm mt-4 text-center">
+                    Subscribe to unlock exclusive Discord rewards!
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col sm:flex-row items-center justify-between">
+                <div class="flex items-center space-x-4 mb-4 sm:mb-0">
+                    <img id="guild-icon-footer" src="" alt="Server Icon" class="w-6 h-6 rounded-full" onerror="this.style.display='none'">
+                    <span class="text-gray-400 text-sm">© <span id="current-year">2025</span> <span id="guild-name-footer">Dreamer's Land</span></span>
+                </div>
+                <div class="flex space-x-6 text-sm">
+                    <a href="https://dreamer.jarvibeta.xyz" class="text-gray-400 hover:text-white transition-colors">Homepage</a>
+                    <a href="https://dreamer.jarvibeta.xyz/guide" class="text-gray-400 hover:text-white transition-colors">Guide</a>
+                    <a href="https://dreamer.jarvibeta.xyz/privacy-policy" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Main JavaScript -->
+    <script src="/cdn/js/main.js"></script>
+    
+    <!-- Additional script for YouTube channel link -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update YouTube subscribe button link when API data loads
+            setTimeout(() => {
+                const apiData = window.verificationSite?.apiData;
+                if (apiData?.youtube?.channelUrl) {
+                    const subscribeBtn = document.getElementById('youtube-subscribe-button');
+                    if (subscribeBtn) {
+                        subscribeBtn.href = apiData.youtube.channelUrl;
+                    }
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
