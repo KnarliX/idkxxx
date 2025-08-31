@@ -5,87 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lottie Animations Tabs</title>
   <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #121212;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      height: 100vh;
-    }
-    .tabs {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px;
-      padding: 10px;
-      background: #1f1f1f;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-    .tabs button {
-      background: #2a2a2a;
-      border: none;
-      padding: 8px 14px;
-      border-radius: 6px;
-      cursor: pointer;
-      color: #ccc;
-      transition: 0.2s;
-    }
-    .tabs button.active {
-      background: #4cafef;
-      color: #fff;
-    }
-    .tab-content {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-    }
-    lottie-player {
-      width: 300px;
-      height: 300px;
-    }
-  </style>
+  
 </head>
 <body>
 
-  <!-- Tabs -->
-  <div class="tabs" id="tabs"></div>
-
   <!-- Animation Display -->
-  <div class="tab-content">
-    <lottie-player id="player" background="transparent" speed="1" loop autoplay></lottie-player>
-  </div>
-
-  <script>
-    const totalAnimations = 15;
-    const tabsContainer = document.getElementById('tabs');
-    const player = document.getElementById('player');
-
-    // Create Tabs
-    for (let i = 1; i <= totalAnimations; i++) {
-      const btn = document.createElement('button');
-      btn.textContent = "Tab " + i;
-      btn.onclick = () => {
-        // Change animation
-        player.load(`animations/${i}.json`);
-        // Active state
-        document.querySelectorAll('.tabs button').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-      };
-      if (i === 1) btn.classList.add('active'); // default active
-      tabsContainer.appendChild(btn);
-    }
-
-    // Load default first animation
-    player.load("animations/1.json");
-  </script>
+  <lottie-player id="player" src="animations/1.json background="transparent" speed="1" loop autoplay></lottie-player>
 
 </body>
 </html>
