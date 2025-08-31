@@ -1,157 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verification Portal | Dreamer's Land</title>
-    <meta name="description" content="Official verification portal for Dreamer's Land Discord server. Verify your YouTube subscription to unlock exclusive roles and access.">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="">
-    
-    <!-- TailwindCSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Main CSS -->
-    <link rel="stylesheet" href="cdn/css/main.css">
-    
-    <!-- Preload -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" as="style">
-    <link rel="preload" href="cdn/js/main.js" as="script">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lottie Animations Tabs</title>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #121212;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+    }
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px;
+      background: #1f1f1f;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .tabs button {
+      background: #2a2a2a;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      color: #ccc;
+      transition: 0.2s;
+    }
+    .tabs button.active {
+      background: #4cafef;
+      color: #fff;
+    }
+    .tab-content {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+    lottie-player {
+      width: 300px;
+      height: 300px;
+    }
+  </style>
 </head>
-<body class="min-h-screen flex flex-col">
-    <!-- Animated Background -->
-    <div class="animated-bg"></div>
-    
-    <!-- Header -->
-    <header class="glass border-b border-white/10 sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <!-- Logo -->
-                <div class="flex items-center space-x-3">
-                    <img id="guild-icon" src="" alt="Server Icon" class="w-8 h-8 rounded-full avatar" onerror="this.style.display='none'">
-                    <h1 class="text-xl font-bold text-white">
-                        <span id="guild-name">Dreamer's Land</span>
-                    </h1>
-                </div>
-                
-                <!-- Theme Toggle -->
-                <div class="theme-switch">
-                    <input type="checkbox" id="theme-toggle">
-                    <span class="theme-slider">
-                        <div class="star-field">
-                            <div class="mini-star mini-star-1"></div>
-                            <div class="mini-star mini-star-2"></div>
-                            <div class="mini-star mini-star-3"></div>
-                        </div>
-                        <div class="moon-dot moon-dot-1"></div>
-                        <div class="moon-dot moon-dot-2"></div>
-                        <div class="moon-dot moon-dot-3"></div>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </header>
+<body>
 
-    <!-- Main Content -->
-    <main class="flex-1 flex items-center justify-center px-4 py-8">
-        <div class="max-w-2xl w-full text-center">
-            <!-- Main Card -->
-            <div class="glass-card p-8 slide-up">
-                <!-- Server Icon -->
-                <div class="mb-6">
-                    <img id="guild-icon-large" src="" alt="Server Icon" class="w-20 h-20 mx-auto rounded-full avatar shadow-lg" onerror="this.style.display='none'">
-                </div>
-                
-                <!-- Title -->
-                <h1 class="text-3xl sm:text-4xl font-bold text-white mb-4">
-                    Welcome to <span id="guild-name-main" class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Dreamer's Land</span>
-                </h1>
-                
-                <!-- Description -->
-                <p class="text-gray-300 text-lg mb-8 leading-relaxed">
-                    This is the official verification portal for our Discord community. 
-                    To access exclusive features and roles, please visit our main website.
-                </p>
-                
-                <!-- Info Cards -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                    <div class="glass p-4 rounded-lg">
-                        <div class="text-2xl font-bold text-blue-400" id="guild-member-count">N/A</div>
-                        <div class="text-gray-300 text-sm">Total Members</div>
-                    </div>
-                    <div class="glass p-4 rounded-lg">
-                        <div class="text-2xl font-bold text-green-400" id="guild-verified-count">N/A</div>
-                        <div class="text-gray-300 text-sm">Verified Members</div>
-                    </div>
-                </div>
-                
-                <!-- Action Buttons -->
-                <div class="space-y-4">
-                    <a href="https://dreamer.jarvibeta.xyz" class="btn btn-primary w-full sm:w-auto inline-flex items-center justify-center">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
-                        </svg>
-                        Go to Homepage
-                    </a>
-                </div>
-                
-                <!-- Links -->
-                <div class="mt-8 pt-6 border-t border-white/10">
-                    <div class="flex flex-wrap justify-center gap-6 text-sm">
-                        <a href="https://dreamer.jarvibeta.xyz/guide" class="text-gray-400 hover:text-white transition-colors">
-                            📖 Verification Guide
-                        </a>
-                        <a href="https://dreamer.jarvibeta.xyz/privacy-policy" class="text-gray-400 hover:text-white transition-colors">
-                            🔒 Privacy Policy
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Additional Info -->
-            <div class="mt-8 glass-card p-6">
-                <h3 class="text-xl font-semibold text-white mb-4">Need to Verify?</h3>
-                <p class="text-gray-300 mb-4">
-                    If you received a verification link, click it directly from Discord. 
-                    For help with verification, visit our guide.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-3 justify-center">
-                    <a href="https://dreamer.jarvibeta.xyz/guide" class="btn btn-secondary">
-                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                        How to Verify
-                    </a>
-                    <a href="https://dreamer.jarvibeta.xyz" class="btn btn-ghost">
-                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                        </svg>
-                        Visit Main Site
-                    </a>
-                </div>
-            </div>
-        </div>
-    </main>
+  <!-- Tabs -->
+  <div class="tabs" id="tabs"></div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col sm:flex-row items-center justify-between">
-                <div class="flex items-center space-x-4 mb-4 sm:mb-0">
-                    <img id="guild-icon-footer" src="" alt="Server Icon" class="w-6 h-6 rounded-full" onerror="this.style.display='none'">
-                    <span class="text-gray-400 text-sm">© 2025 <span id="guild-name-footer">Dreamer's Land</span></span>
-                </div>
-                <div class="flex space-x-6 text-sm">
-                    <a href="https://dreamer.jarvibeta.xyz" class="text-gray-400 hover:text-white transition-colors">Homepage</a>
-                    <a href="https://dreamer.jarvibeta.xyz/guide" class="text-gray-400 hover:text-white transition-colors">Guide</a>
-                    <a href="https://dreamer.jarvibeta.xyz/privacy-policy" class="text-gray-400 hover:text-white transition-colors">Privacy</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+  <!-- Animation Display -->
+  <div class="tab-content">
+    <lottie-player id="player" background="transparent" speed="1" loop autoplay></lottie-player>
+  </div>
 
-    <!-- Main JavaScript -->
-    <script src="/cdn/js/main.js"></script>
+  <script>
+    const totalAnimations = 15;
+    const tabsContainer = document.getElementById('tabs');
+    const player = document.getElementById('player');
+
+    // Create Tabs
+    for (let i = 1; i <= totalAnimations; i++) {
+      const btn = document.createElement('button');
+      btn.textContent = "Tab " + i;
+      btn.onclick = () => {
+        // Change animation
+        player.load(`animations/${i}.json`);
+        // Active state
+        document.querySelectorAll('.tabs button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      };
+      if (i === 1) btn.classList.add('active'); // default active
+      tabsContainer.appendChild(btn);
+    }
+
+    // Load default first animation
+    player.load("animations/1.json");
+  </script>
+
 </body>
 </html>
