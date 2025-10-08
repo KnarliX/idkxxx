@@ -4,6 +4,8 @@
 
 Ek **iframe-friendly**, **zero-CSS (inline styles only)** Lottie player jo URL ke query parameters se poori tarah configurable hai. Is guide me tum seekhoge ki isko kaise setup karna hai, kaun-kaun se parameters milte hain, aur unka prayog kaise karna hai — step-by-step.
 
+[a536dab](../../commit/95d68d3df16c96204f148f4ec011d5a67c30b820)
+
 ---
 
 ## ✅ Features (Saar)
