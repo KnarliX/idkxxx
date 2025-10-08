@@ -4,7 +4,7 @@
 
 Ek **iframe-friendly**, **zero-CSS (inline styles only)** Lottie player jo URL ke query parameters se poori tarah configurable hai. Is guide me tum seekhoge ki isko kaise setup karna hai, kaun-kaun se parameters milte hain, aur unka prayog kaise karna hai — step-by-step.
 
-[a536dab](../../tree/a536dab04815f298de7c7df49ca8e34deb5dd6ad)
+[a536dab](https://dash.cloudflare.com/:account/workers-and-pages/create/pages)
 
 ---
 
