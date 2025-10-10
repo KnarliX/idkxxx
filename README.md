@@ -1,3 +1,11 @@
+DISCORD_CLIENT_ID="1399433001007448126"
+DISCORD_CLIENT_SECRET="pfKv9mDRz0G1ymrO7IsHv0xwswh8uYge"
+DISCORD_REDIRECT_URI="https://91ad3d71-6042-401b-b4d6-ea413908b905-00-8we2095b08vh.sisko.replit.dev"
+DISCORD_GUILD_ID="1288525255492767824"
+VERIFIED_ROLE_ID="1288807147412525107"
+CALLBACK_URL="https://janvi.jarvibeta.xyz/verification/callback"
+ERROR_URL="https://janvi.jarvibeta.xyz/verification/error?msg"
+
 <div style="white-space:pre; font-family:monospace;">
 
 # Lottie Animation Player — README
