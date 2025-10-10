@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Error Message Display</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 50px;
+      background-color: #f8f8f8;
+      text-align: center;
+      color: #333;
+    }
+    .message {
+      background-color: #ffdddd;
+      border: 1px solid #ff5c5c;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+      border-radius: 5px;
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="message" id="messageBox">Loading...</div>
+
+  <script>
+    // Function to get query param from URL
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    const msg = getQueryParam('msg');
+    const messageBox = document.getElementById('messageBox');
+
+    if (msg) {
+      // Show the error message from URL parameter
+      messageBox.textContent = msg;
+    } else {
+      // Default message if no msg param present
+      messageBox.textContent = "You have visited this page directly.";
+    }
+  </script>
+</body>
+</html>
