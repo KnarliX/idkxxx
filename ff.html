@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Callback Receiver</title>
+</head>
+<body>
+  <script>
+    // Configuration - Update this with your auth domain
+    const TRUSTED_AUTH_ORIGIN = 'http://auth.example.com';  // replace with your auth domain
+    const STORAGE_KEY = 'login_data';
+
+    /**
+     * Save authentication data to localStorage
+     * Replaces existing data if present
+     */
+    function saveAuthData(data) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        console.log('✅ Authentication data saved successfully');
+        return true;
+      } catch (error) {
+        console.error('❌ Failed to save auth data:', error);
+        return false;
+      }
+    }
+
+    /**
+     * Listen for authentication messages from auth domain
+     * Only accepts messages from the trusted auth origin
+     */
+    window.addEventListener('message', (event) => {
+      // Verify the message is from our trusted auth domain
+      if (event.origin !== TRUSTED_AUTH_ORIGIN) {
+        console.warn('⚠️ Ignored message from untrusted origin:', event.origin);
+        return;
+      }
+
+      const message = event.data || {};
+      
+      // Check if this is an authentication message
+      if (message.type === 'auth' && message.userData) {
+        console.log('📨 Received authentication message');
+        
+        // Save the user data to localStorage
+        const saved = saveAuthData(message.userData);
+        
+        if (saved && event.source && event.source.postMessage) {
+          // Send acknowledgment back to auth domain
+          event.source.postMessage(
+            { type: 'auth-ack', nonce: message.nonce },
+            event.origin
+          );
+          console.log('📤 Acknowledgment sent to auth domain');
+        }
+      }
+    });
+
+    console.log('🔄 Callback receiver ready, listening for auth messages...');
+  </script>
+</body>
+</html>
