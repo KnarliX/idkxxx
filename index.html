@@ -1,98 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>User Authentication Display</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 2rem;
-      background-color: #f9f9f9;
-      color: #333;
-    }
-    .user-info {
-      background: white;
-      padding: 1rem 2rem;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      max-width: 400px;
-    }
-    .avatar {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 1rem;
-    }
-    .info-row {
-      margin-bottom: 0.5rem;
-    }
-    .error {
-      color: red;
-      font-weight: bold;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Callback Receiver</title>
 </head>
 <body>
-  <div id="content">
-    <h1>User Authentication Data</h1>
-    <div id="userData" class="user-info" style="display:none;">
-      <img id="avatar" class="avatar" src="" alt="User Avatar" />
-      <div class="info-row"><strong>User ID:</strong> <span id="userid"></span></div>
-      <div class="info-row"><strong>Username:</strong> <span id="username"></span></div>
-      <div class="info-row"><strong>Name:</strong> <span id="name"></span></div>
-      <div class="info-row"><strong>Nickname:</strong> <span id="nickname"></span></div>
-      <div class="info-row"><strong>Verified:</strong> <span id="verified"></span></div>
-      <div class="info-row"><strong>avatar:</strong> <span id="avatar"></span></div>
-      <div class="info-row"><strong>guild_avatar:</strong> <span id="guild_avatar"></span></div>
-    </div>
-    <div id="error" class="error"></div>
-  </div>
-
   <script>
-    // Extract key from URL query parameters
-    const params = new URLSearchParams(window.location.search);
-    const authKey = params.get('key');
+    // Configuration - Update this with your auth domain
+    const TRUSTED_AUTH_ORIGIN = 'http://ss-7uu.pages.dev';  // replace with your auth domain
+    const STORAGE_KEY = 'login_data';
 
-    if (authKey) {
-      // POST request to backend /data endpoint with auth key
-      fetch('https://ss-7uu.pages.dev/data', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ key: authKey })
-      })
-      .then(response => response.json())
-      .then(data => {
-        if (data.error) {
-          document.getElementById('error').textContent = 'Authentication error: ' + data.error;
-          return;
-        }
-
-        // Destructure user data
-        const { userid, username, name, nickname, avatar, guild_avatar, verified } = data;
-
-        // Build avatar URL
-        const avatarUrl = avatar
-          ? `https://cdn.discordapp.com/avatars/${userid}/${avatar}.webp`
-          : `https://cdn.discordapp.com/embed/avatars/0.webp`;
-
-        // Show user data on the page
-        document.getElementById('avatar').src = avatarUrl;
-        document.getElementById('userid').textContent = userid || 'N/A';
-        document.getElementById('username').textContent = username || 'N/A';
-        document.getElementById('name').textContent = name || 'N/A';
-        document.getElementById('nickname').textContent = nickname || 'N/A';
-        document.getElementById('verified').textContent = verified === 'true' ? 'Yes' : 'No';
-
-        document.getElementById('userData').style.display = 'block';
-      })
-      .catch(err => {
-        document.getElementById('error').textContent = 'Failed to fetch user data: ' + err.message;
-      });
-    } else {
-      document.getElementById('error').textContent = 'No authentication key provided in URL.';
+    /**
+     * Save authentication data to localStorage
+     * Replaces existing data if present
+     */
+    function saveAuthData(data) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        console.log('✅ Authentication data saved successfully');
+        return true;
+      } catch (error) {
+        console.error('❌ Failed to save auth data:', error);
+        return false;
+      }
     }
+
+    /**
+     * Listen for authentication messages from auth domain
+     * Only accepts messages from the trusted auth origin
+     */
+    window.addEventListener('message', (event) => {
+      // Verify the message is from our trusted auth domain
+      if (event.origin !== TRUSTED_AUTH_ORIGIN) {
+        console.warn('⚠️ Ignored message from untrusted origin:', event.origin);
+        return;
+      }
+
+      const message = event.data || {};
+      
+      // Check if this is an authentication message
+      if (message.type === 'auth' && message.userData) {
+        console.log('📨 Received authentication message');
+        
+        // Save the user data to localStorage
+        const saved = saveAuthData(message.userData);
+        
+        if (saved && event.source && event.source.postMessage) {
+          // Send acknowledgment back to auth domain
+          event.source.postMessage(
+            { type: 'auth-ack', nonce: message.nonce },
+            event.origin
+          );
+          console.log('📤 Acknowledgment sent to auth domain');
+        }
+      }
+    });
+
+    console.log('🔄 Callback receiver ready, listening for auth messages...');
   </script>
 </body>
 </html>
