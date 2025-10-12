@@ -1,24 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Callback Receiver</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    #authDataDisplay {
+      background: #f4f4f4;
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin-top: 20px;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      max-width: 600px;
+      border-radius: 6px;
+    }
+  </style>
 </head>
 <body>
   <script>
     // Configuration - Update this with your auth domain
-    const TRUSTED_AUTH_ORIGIN = 'http://ss-7uu.pages.dev';  // replace with your auth domain
+    const TRUSTED_AUTH_ORIGIN = 'https://ss-7uu.pages.dev';  // replace with your auth domain
     const STORAGE_KEY = 'login_data';
 
     /**
      * Save authentication data to localStorage
      * Replaces existing data if present
+     * Also updates page display
      */
     function saveAuthData(data) {
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
         console.log('✅ Authentication data saved successfully');
+
+        // Update page display
+        const displayEl = document.getElementById('authDataDisplay');
+        if (displayEl) {
+          displayEl.textContent = JSON.stringify(data, null, 2);
+        }
+
         return true;
       } catch (error) {
         console.error('❌ Failed to save auth data:', error);
@@ -43,7 +67,7 @@
       if (message.type === 'auth' && message.userData) {
         console.log('📨 Received authentication message');
         
-        // Save the user data to localStorage
+        // Save the user data to localStorage and update display
         const saved = saveAuthData(message.userData);
         
         if (saved && event.source && event.source.postMessage) {
@@ -54,6 +78,22 @@
           );
           console.log('📤 Acknowledgment sent to auth domain');
         }
+      }
+    });
+
+    // On page load, show existing data from localStorage if any
+    window.addEventListener('DOMContentLoaded', () => {
+      const existingData = localStorage.getItem(STORAGE_KEY);
+      if (existingData) {
+        const displayEl = document.createElement('pre');
+        displayEl.id = 'authDataDisplay';
+        displayEl.textContent = JSON.stringify(JSON.parse(existingData), null, 2);
+        document.body.appendChild(displayEl);
+      } else {
+        const displayEl = document.createElement('pre');
+        displayEl.id = 'authDataDisplay';
+        displayEl.textContent = 'No authentication data saved yet.';
+        document.body.appendChild(displayEl);
       }
     });
 
