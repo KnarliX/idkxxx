@@ -1,48 +1,200 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Error Message Display</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 50px;
-      background-color: #f8f8f8;
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+  <meta charset="UTF-8" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
+  <title>Authentication Error</title>  
+  <style>  
+    /* Reset & base */
+    *, *::before, *::after {  
+      margin: 0;  
+      padding: 0;  
+      box-sizing: border-box;  
+    }  
+
+    body {  
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  
+      background: linear-gradient(135deg, #f8fafc, #e3e8f0);  
+      min-height: 100vh;  
+      display: flex;  
+      align-items: center;  
+      justify-content: center;  
+      padding: 20px;  
+      color: #2d3748;  
+    }  
+
+    .error-container {
+      background: #ffffffcc; /* Slight transparency */
+      border-radius: 24px;  
+      padding: 44px 48px;
+      max-width: 480px;  
+      width: 100%;  
+      box-shadow: 0 14px 48px rgba(45, 55, 72, 0.15);
       text-align: center;
-      color: #333;
+      backdrop-filter: blur(8px);
+      border: 1px solid #cbd5e0;
+      transition: transform 0.3s ease;
     }
-    .message {
-      background-color: #ffdddd;
-      border: 1px solid #ff5c5c;
-      padding: 20px;
-      max-width: 600px;
-      margin: auto;
-      border-radius: 5px;
-      font-size: 1.2rem;
-    }
-  </style>
-</head>
-<body>
-  <div class="message" id="messageBox">Loading...</div>
-
-  <script>
-    // Function to get query param from URL
-    function getQueryParam(param) {
-      const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get(param);
+    .error-container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 80px rgba(45, 55, 72, 0.2);
     }
 
-    const msg = getQueryParam('msg');
-    const messageBox = document.getElementById('messageBox');
-
-    if (msg) {
-      // Show the error message from URL parameter
-      messageBox.textContent = msg;
-    } else {
-      // Default message if no msg param present
-      messageBox.textContent = "You have visited this page directly.";
+    .error-icon {  
+      width: 96px;  
+      height: 96px;  
+      margin: 0 auto 28px;  
+      border-radius: 50%;  
+      display: flex;  
+      align-items: center;  
+      justify-content: center;  
+      background: #fed7d7; /* light red background */
+      box-shadow: 0 0 12px #f56565aa;
     }
-  </script>
-</body>
+
+    .error-icon svg {
+      width: 50px;
+      height: 50px;
+      stroke-width: 0;
+    }
+
+    h1 {  
+      color: #e53e3e;  
+      font-size: 32px;  
+      margin-bottom: 22px;  
+      font-weight: 700;  
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+      text-shadow: 0 1px 4px rgba(229, 62, 62, 0.5);
+    }  
+
+    .error-message {  
+      color: #4a5568;  
+      font-size: 18px;  
+      line-height: 1.7;  
+      margin-bottom: 36px;  
+      padding: 20px 24px;  
+      background: #fef2f2;  
+      border-radius: 12px;  
+      border-left: 6px solid #e53e3e;  
+      box-shadow: inset 0 1px 4px #fbb6b633;
+      font-weight: 500;
+    }  
+
+    .error-code {  
+      font-family: 'Courier New', Courier, monospace;  
+      font-size: 14px;  
+      color: #718096;  
+      background: #edf2f7;  
+      padding: 10px 14px;  
+      border-radius: 10px;  
+      display: inline-block;  
+      margin-bottom: 30px;  
+      letter-spacing: 1.2px;
+      user-select: text;
+      box-shadow: 0 2px 6px rgba(113, 128, 150, 0.2);
+    }  
+
+    .action-buttons {  
+      display: flex;  
+      gap: 16px;  
+      justify-content: center;  
+      flex-wrap: wrap;  
+    }  
+
+    .btn {  
+      padding: 14px 30px;  
+      border: none;  
+      border-radius: 12px;  
+      font-size: 18px;  
+      font-weight: 600;  
+      cursor: pointer;  
+      transition: all 0.25s ease;  
+      text-decoration: none;  
+      display: inline-block;  
+      box-shadow: 0 6px 14px rgba(88, 101, 242, 0.3);
+      user-select: none;
+    }  
+
+    .btn-primary {  
+      background: #5865f2;  
+      color: white;  
+    }  
+
+    .btn-primary:hover, .btn-primary:focus {  
+      background: #4752c4;  
+      transform: translateY(-3px);  
+      box-shadow: 0 12px 20px rgba(71, 82, 196, 0.5);  
+      outline: none;
+    }  
+
+    .help-text {  
+      margin-top: 30px;  
+      font-size: 15px;  
+      color: #718096;  
+    }  
+
+    .help-text a {  
+      color: #5865f2;  
+      font-weight: 600;
+      text-decoration: none;  
+      transition: color 0.2s ease;  
+    }  
+
+    .help-text a:hover, .help-text a:focus {  
+      color: #4752c4;  
+      text-decoration: underline;  
+      outline: none;
+    }  
+  </style>  
+</head>  
+<body>  
+  <div class="error-container" role="alert" aria-live="assertive">  
+    <div class="error-icon" aria-hidden="true">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#c73434" stroke-width="0">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M23.0886 4.55328C23.457 3.81558 24.5096 3.81557 24.878 4.55327L43.86 42.5692C44.192 43.234 43.7084 44.0159 42.9653 44.0159H5.00129C4.25814 44.0159 3.77464 43.234 4.10662 42.5692L23.0886 4.55328ZM21 18C21 16.3431 22.3431 15 24 15C25.6569 15 27 16.3431 27 18V29C27 30.6569 25.6569 32 24 32C22.3431 32 21 30.6569 21 29V18ZM23.9663 34C22.3281 34 21 35.3281 21 36.9663C21 38.6045 22.3281 39.9326 23.9663 39.9326H24.0337C25.6719 39.9326 27 38.6045 27 36.9663C27 35.3281 25.6719 34 24.0337 34H23.9663Z" fill="#c73434"/>
+      </svg>
+    </div>  
+    <h1>Authentication Failed</h1>  
+    <div class="error-message" id="errorMessage">  
+      An error occurred during authentication. Please try again.  
+    </div>
+    <!-- error code for showoff and finding error time
+    <script>
+    const base36Code = "M5MQCP1C"; // your error code without ERR_
+    const millis = parseInt(base36Code, 36);
+    const date = new Date(millis);
+    console.log(date.toString());
+    </script>
+    -->
+    <div class="error-code" id="errorCode" aria-label="Error code"></div>  
+    <div class="action-buttons">  
+      <a href="/" class="btn btn-primary" role="button" tabindex="0">Go Home</a>  
+    </div>  
+    <div class="help-text">  
+      Need help? <a href="https://joindc.pages.dev/" target="_blank" rel="noopener noreferrer">Join our Discord</a>  
+    </div>  
+  </div>  
+  
+  <script>  
+    function displayError() {  
+      const urlParams = new URLSearchParams(window.location.search);  
+      const errorMsg = urlParams.get('msg') || urlParams.get('message');
+        
+      if (errorMsg) {  
+        const decodedMessage = decodeURIComponent(errorMsg);  
+        document.getElementById('errorMessage').textContent = decodedMessage;  
+        const errorCode = `ERR_${Date.now().toString(36).toUpperCase()}`;
+        document.getElementById('errorCode').textContent = `Error Code: ${errorCode}`;  //this is for showoff 
+        console.error('Authentication error:', decodedMessage);  
+      } else {  
+        document.getElementById('errorMessage').textContent = 'An unknown error occurred. Please try authenticating again.';  
+        document.getElementById('errorCode').style.display = 'none';  
+      }  
+      document.title = 'Authentication Error - ' + (errorMsg || 'Unknown Error');  
+    }  
+  
+    displayError();  
+  </script>  
+</body>  
 </html>
