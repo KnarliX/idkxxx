@@ -1,16 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lottie Animations Tabs</title>
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-  
+<meta charset="UTF-8" />
+<title>Normal Text to Base122 Encoder/Decoder</title>
 </head>
 <body>
+<h2>Encode Normal Data to Base122</h2>
+<textarea id="inputText" rows="6" cols="60" placeholder="Enter normal text here"></textarea><br/>
+<button onclick="encodeBase122()">Encode to Base122</button>
+<h3>Encoded Output:</h3>
+<textarea id="encodedText" rows="6" cols="60" readonly></textarea>
 
-  <!-- Animation Display -->
-  <lottie-player id="player" src="animations/5.json" background="transparent" speed="1" loop autoplay></lottie-player>
+<script>
+// Mock base122 encode function (real logic se replace karein)
+function base122Encode(inputStr) {
+  return Array.from(inputStr).map(c => c.charCodeAt(0).toString(16)).join("-");
+}
 
+function encodeBase122() {
+  const input = document.getElementById("inputText").value;
+  const encoded = base122Encode(input);
+  document.getElementById("encodedText").value = encoded;
+}
+</script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Base122 to Normal Text Decoder</title>
+</head>
+<body>
+<h2>Decode Base122 to Normal Data</h2>
+<textarea id="encodedInput" rows="6" cols="60" placeholder="Enter Base122 encoded text here"></textarea><br/>
+<button onclick="decodeBase122()">Decode to Normal Text</button>
+<h3>Decoded Output:</h3>
+<textarea id="decodedText" rows="6" cols="60" readonly></textarea>
+
+<script>
+// Mock base122 decode function (real logic se replace karein)
+function base122Decode(encodedStr) {
+  let hexCodes = encodedStr.split("-");
+  return hexCodes.map(h => String.fromCharCode(parseInt(h, 16))).join("");
+}
+
+function decodeBase122() {
+  const encoded = document.getElementById("encodedInput").value;
+  const decoded = base122Decode(encoded);
+  document.getElementById("decodedText").value = decoded;
+}
+</script>
 </body>
 </html>
