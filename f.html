@@ -1,54 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-<meta charset="UTF-8" />
-<title>Normal Text to Base122 Encoder/Decoder</title>
+  <meta charset="utf-8" />
+  <title>Dreamer (B) — Receiver</title>
+  <style>
+    body { font-family: system-ui; padding: 20px; }
+    pre { white-space: pre-wrap; background: #f4f4f4; padding: 10px; border-radius: 6px; }
+  </style>
 </head>
 <body>
-<h2>Encode Normal Data to Base122</h2>
-<textarea id="inputText" rows="6" cols="60" placeholder="Enter normal text here"></textarea><br/>
-<button onclick="encodeBase122()">Encode to Base122</button>
-<h3>Encoded Output:</h3>
-<textarea id="encodedText" rows="6" cols="60" readonly></textarea>
+  <h2>Dreamer (B) — Receiver</h2>
+  <div id="status">Waiting for auth message or reading stored data...</div>
+  <pre id="stored"></pre>
 
 <script>
-// Mock base122 encode function (real logic se replace karein)
-function base122Encode(inputStr) {
-  return Array.from(inputStr).map(c => c.charCodeAt(0).toString(16)).join("-");
+const TRUSTED_A_ORIGIN = 'http://localhost:6700';  // change to your A.com origin
+const STORAGE_KEY = 'login_data';
+
+/* Save directly */
+function saveAuth(obj) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(obj));
 }
 
-function encodeBase122() {
-  const input = document.getElementById("inputText").value;
-  const encoded = base122Encode(input);
-  document.getElementById("encodedText").value = encoded;
+/* Read stored */
+function readAuth() {
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || null;
+  } catch {
+    return null;
+  }
 }
+
+/* Display stored data */
+function renderStored() {
+  const data = readAuth();
+  const el = document.getElementById('stored');
+  const status = document.getElementById('status');
+  if (!data) {
+    status.textContent = 'No stored auth found.';
+    el.textContent = '';
+  } else {
+    status.textContent = 'Stored auth data:';
+    el.textContent = JSON.stringify(data, null, 2);
+  }
+}
+
+/* Receive message */
+window.addEventListener('message', (ev) => {
+  if (ev.origin !== TRUSTED_A_ORIGIN) {
+    console.warn('Ignored message from', ev.origin);
+    return;
+  }
+  const data = ev.data || {};
+  if (data.type === 'auth' && data.userData) {
+    saveAuth(data.userData);
+    // send acknowledgement back
+    if (ev.source && ev.source.postMessage) {
+      ev.source.postMessage({ type: 'auth-ack' }, ev.origin);
+    }
+    document.getElementById('status').textContent = 'Auth received and stored.';
+    renderStored();
+  }
+});
+
+/* On load, show existing data */
+window.addEventListener('load', renderStored);
+
+/* Clear button */
+window.clearStoredAuth = () => {
+  localStorage.removeItem(STORAGE_KEY);
+  renderStored();
+};
 </script>
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<title>Base122 to Normal Text Decoder</title>
-</head>
-<body>
-<h2>Decode Base122 to Normal Data</h2>
-<textarea id="encodedInput" rows="6" cols="60" placeholder="Enter Base122 encoded text here"></textarea><br/>
-<button onclick="decodeBase122()">Decode to Normal Text</button>
-<h3>Decoded Output:</h3>
-<textarea id="decodedText" rows="6" cols="60" readonly></textarea>
 
-<script>
-// Mock base122 decode function (real logic se replace karein)
-function base122Decode(encodedStr) {
-  let hexCodes = encodedStr.split("-");
-  return hexCodes.map(h => String.fromCharCode(parseInt(h, 16))).join("");
-}
-
-function decodeBase122() {
-  const encoded = document.getElementById("encodedInput").value;
-  const decoded = base122Decode(encoded);
-  document.getElementById("decodedText").value = decoded;
-}
-</script>
+<hr />
+<button onclick="clearStoredAuth()">Clear stored auth (for test)</button>
 </body>
 </html>
