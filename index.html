@@ -1,48 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Callback Receiver</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Authenticating...</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
+      background-color: #000;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: system-ui, sans-serif;
+      color: #fff;
     }
-    #authDataDisplay {
-      background: #f4f4f4;
-      border: 1px solid #ddd;
-      padding: 15px;
+    .loading-text {
       margin-top: 20px;
-      white-space: pre-wrap;
-      word-wrap: break-word;
-      max-width: 600px;
-      border-radius: 6px;
+      font-size: 18px;
+    }
+    .dot {
+      animation: dot 1.4s infinite;
+    }
+    .dot:nth-child(2) { animation-delay: 0.2s; }
+    .dot:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes dot {
+      0%, 60%, 100% { opacity: 0; }
+      30% { opacity: 1; }
     }
   </style>
 </head>
 <body>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    <g stroke="#ff8c00" stroke-width="2" fill="none">
+
+      <!-- Background rings -->
+      <circle cx="50" cy="50" r="30" stroke="#daa520" opacity="0.3" />
+      <circle cx="50" cy="50" r="40" stroke="#ffd700" opacity="0.15" />
+
+      <!-- Incoming stream -->
+      <path d="M10 50 A40 40 0 0 1 90 50" stroke="#ff8c00" stroke-dasharray="10 10">
+        <animate attributeName="stroke-dashoffset" values="0;20" dur="0.8s" repeatCount="indefinite" />
+      </path>
+
+      <!-- Outgoing stream -->
+      <path d="M10 50 A40 40 0 0 0 90 50" stroke="#ffa500" stroke-dasharray="10 10">
+        <animate attributeName="stroke-dashoffset" values="20;0" dur="0.8s" repeatCount="indefinite" />
+      </path>
+
+      <!-- Expanding ripple wave 1 -->
+      <circle cx="50" cy="50" r="0" stroke="#ff8c00" stroke-width="2.5" fill="none">
+        <animate attributeName="r" values="0;40" dur="1.8s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="0.9;0" dur="1.8s" repeatCount="indefinite" />
+      </circle>
+
+      <!-- Expanding ripple wave 2 -->
+      <circle cx="50" cy="50" r="10" stroke="#ffa500" stroke-width="2.5" fill="none" opacity="0.5">
+        <animate attributeName="r" values="10;50" dur="1.8s" begin="0.9s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="0.7;0" dur="1.8s" begin="0.9s" repeatCount="indefinite" />
+      </circle>
+
+      <!-- Center rotating energy ring -->
+      <g transform="translate(50,50)">
+        <circle r="6" stroke="#ff8c00" stroke-width="2" fill="none" stroke-dasharray="10 8">
+          <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="1.6s" repeatCount="indefinite" />
+        </circle>
+        <circle r="2.5" fill="#ff8c00" opacity="0.8">
+          <animate attributeName="opacity" values="0.8;0.3;0.8" dur="1.6s" repeatCount="indefinite" />
+        </circle>
+      </g>
+
+    </g>
+
+    <!-- === watermark === -->
+    <text x="50" y="54" text-anchor="middle"
+         font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif"
+          font-weight="700"
+          font-size="12"
+          fill="#ffffff"
+          opacity=".03"
+          transform="rotate(-30 50 50)"
+          pointer-events="none">
+      Janvi
+    </text>
+  </svg>
+  
+  <div class="loading-text">authenticating<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></div>
+
   <script>
     // Configuration - Update this with your auth domain
-    const TRUSTED_AUTH_ORIGIN = 'https://ss-7uu.pages.dev';  // replace with your auth domain
+    const TRUSTED_AUTH_ORIGIN = 'https://auth.example.com';  // replace with your auth domain
     const STORAGE_KEY = 'login_data';
+    
+    let dataReceived = false;
+
+    // Set 30 second timeout for data not receiving
+    const timeout = setTimeout(() => {
+      if (!dataReceived) {
+        window.location.href = '/error?msg=' + encodeURIComponent('data not receiving');
+      }
+    }, 30000);
 
     /**
      * Save authentication data to localStorage
      * Replaces existing data if present
-     * Also updates page display
      */
     function saveAuthData(data) {
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
         console.log('✅ Authentication data saved successfully');
-
-        // Update page display
-        const displayEl = document.getElementById('authDataDisplay');
-        if (displayEl) {
-          displayEl.textContent = JSON.stringify(data, null, 2);
-        }
-
         return true;
       } catch (error) {
         console.error('❌ Failed to save auth data:', error);
@@ -54,46 +121,38 @@
      * Listen for authentication messages from auth domain
      * Only accepts messages from the trusted auth origin
      */
-    window.addEventListener('message', (event) => {
+    window.addEventListener('message', (ev) => {
       // Verify the message is from our trusted auth domain
-      if (event.origin !== TRUSTED_AUTH_ORIGIN) {
-        console.warn('⚠️ Ignored message from untrusted origin:', event.origin);
+      if (ev.origin !== TRUSTED_AUTH_ORIGIN) {
+        console.warn('⚠️ Ignored message from untrusted origin:', ev.origin);
         return;
       }
 
-      const message = event.data || {};
+      const message = ev.data;
       
-      // Check if this is an authentication message
-      if (message.type === 'auth' && message.userData) {
+      // Check if this is an authentication message with new structure
+      if (message.type === 'auth' && message.userData && message.goto !== undefined && message.ack) {
+        dataReceived = true;
+        clearTimeout(timeout);
+        
         console.log('📨 Received authentication message');
         
-        // Save the user data to localStorage and update display
+        // Save the user data to localStorage
         const saved = saveAuthData(message.userData);
         
-        if (saved && event.source && event.source.postMessage) {
-          // Send acknowledgment back to auth domain
-          event.source.postMessage(
-            { type: 'auth-ack', nonce: message.nonce },
-            event.origin
+        if (saved && ev.source && ev.source.postMessage) {
+          // Send acknowledgment back to auth domain with ack
+          ev.source.postMessage(
+            { type: 'auth-ack', ack: message.ack },
+            ev.origin
           );
           console.log('📤 Acknowledgment sent to auth domain');
+          
+          // Redirect to goto page
+          setTimeout(() => {
+            window.location.href = message.goto || '/';
+          }, 100);
         }
-      }
-    });
-
-    // On page load, show existing data from localStorage if any
-    window.addEventListener('DOMContentLoaded', () => {
-      const existingData = localStorage.getItem(STORAGE_KEY);
-      if (existingData) {
-        const displayEl = document.createElement('pre');
-        displayEl.id = 'authDataDisplay';
-        displayEl.textContent = JSON.stringify(JSON.parse(existingData), null, 2);
-        document.body.appendChild(displayEl);
-      } else {
-        const displayEl = document.createElement('pre');
-        displayEl.id = 'authDataDisplay';
-        displayEl.textContent = 'No authentication data saved yet.';
-        document.body.appendChild(displayEl);
       }
     });
 
