@@ -89,16 +89,20 @@
   <div class="loading-text">authenticating<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></div>
 
   <script>
-    // Configuration - Update this with your auth domain
-    const TRUSTED_AUTH_ORIGIN = 'https://ss-7uu.pages.dev';  // replace with your auth domain
+    // ⚠️ IMPORTANT: Update this with your actual auth domain
+    // Example: If AUTH_DOMAIN env var is 'auth.mydomain.com', use 'https://auth.mydomain.com'
+    const TRUSTED_AUTH_ORIGIN = 'https://auth.example.com';  // ⚠️ CHANGE THIS TO YOUR AUTH DOMAIN
     const STORAGE_KEY = 'login_data';
     
     let dataReceived = false;
+    
+    console.log('🔧 Callback page initialized');
+    console.log('📍 Trusted auth origin:', TRUSTED_AUTH_ORIGIN);
 
     // Set 30 second timeout for data not receiving
     const timeout = setTimeout(() => {
       if (!dataReceived) {
-        window.location.href = '/idkxxx/error?msg=' + encodeURIComponent('data not receiving');
+        window.location.href = '/error?msg=' + encodeURIComponent('data not receiving');
       }
     }, 30000);
 
@@ -106,9 +110,9 @@
      * Save authentication data to localStorage
      * Replaces existing data if present
      */
-    function saveAuthData(obj) {
+    function saveAuthData(data) {
       try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(obj));
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
         console.log('✅ Authentication data saved successfully');
         return true;
       } catch (error) {
@@ -122,6 +126,9 @@
      * Only accepts messages from the trusted auth origin
      */
     window.addEventListener('message', (ev) => {
+      console.log('📬 Message received from:', ev.origin);
+      console.log('📦 Message data:', ev.data);
+      
       
 
       const message = ev.data;
@@ -131,7 +138,10 @@
         dataReceived = true;
         clearTimeout(timeout);
         
-        console.log('📨 Received authentication message');
+        console.log('✅ Received valid authentication message');
+        console.log('👤 User data:', message.userData);
+        console.log('🔗 Goto path:', message.goto);
+        console.log('🎫 Ack token:', message.ack);
         
         // Save the user data to localStorage
         const saved = saveAuthData(message.userData);
@@ -146,9 +156,12 @@
           
           // Redirect to goto page
           setTimeout(() => {
+            console.log('🚀 Redirecting to:', message.goto || '/');
             window.location.href = message.goto || '/';
           }, 100);
         }
+      } else {
+        console.warn('⚠️ Invalid message structure:', message);
       }
     });
 
