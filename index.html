@@ -106,9 +106,9 @@
      * Save authentication data to localStorage
      * Replaces existing data if present
      */
-    function saveAuthData(data) {
+    function saveAuthData(obj) {
       try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(obj));
         console.log('✅ Authentication data saved successfully');
         return true;
       } catch (error) {
