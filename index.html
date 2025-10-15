@@ -122,11 +122,7 @@
      * Only accepts messages from the trusted auth origin
      */
     window.addEventListener('message', (ev) => {
-      // Verify the message is from our trusted auth domain
-      if (ev.origin !== TRUSTED_AUTH_ORIGIN) {
-        console.warn('⚠️ Ignored message from untrusted origin:', ev.origin);
-        return;
-      }
+      
 
       const message = ev.data;
       
