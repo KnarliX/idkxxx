@@ -1,63 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Callback Receiver</title>
+  <meta charset="utf-8" />
+  <title>Auth — Sender (A)</title>
+  <style>
+    body { font-family: system-ui; padding: 20px; }
+    button { padding: 8px 16px; border: none; border-radius: 6px; background: #0078ff; color: white; cursor: pointer; }
+  </style>
 </head>
 <body>
-  <script>
-    // Configuration - Update this with your auth domain
-    const TRUSTED_AUTH_ORIGIN = 'https://ss-7uu.pages.dev';  // replace with your auth domain
-    const STORAGE_KEY = 'login_data';
+  <h2>Auth — Sender (A)</h2>
+  <p>Yah page iframe ke zariye B ko JSON bhejega. Agar iframe block ho gaya, to button se manually bhej sakte ho.</p>
+  <button id="manualSend" style="display:none;">Manually Send via Popup</button>
 
-    /**
-     * Save authentication data to localStorage
-     * Replaces existing data if present
-     */
-    function saveAuthData(data) {
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-        console.log('✅ Authentication data saved successfully');
-        return true;
-      } catch (error) {
-        console.error('❌ Failed to save auth data:', error);
-        return false;
-      }
-    }
+<script>
+const now = new Date();
+const B_ORIGIN = 'http://localhost:6700';      // Receiver origin (B)
+const B_PATH = '/aa.html';                // Receiver page path
+const RECEIVER_URL = B_ORIGIN + B_PATH;
 
-    /**
-     * Listen for authentication messages from auth domain
-     * Only accepts messages from the trusted auth origin
-     */
-    window.addEventListener('message', (event) => {
-      // Verify the message is from our trusted auth domain
-      if (event.origin !== TRUSTED_AUTH_ORIGIN) {
-        console.warn('⚠️ Ignored message from untrusted origin:', event.origin);
-        return;
-      }
+// Example userData
+const goto = '/hi'
+const userData = {
+  userid: 55004733,
+  username: "bfhh",
+  name: "user_global_name",
+  avatar: "avatar_hash_hhhhbbvhere",
+  verified: false,
+  authAt: now.toISOString()
+};
 
-      const message = event.data || {};
-      
-      // Check if this is an authentication message
-      if (message.type === 'auth' && message.userData) {
-        console.log('📨 Received authentication message');
-        
-        // Save the user data to localStorage
-        const saved = saveAuthData(message.userData);
-        
-        if (saved && event.source && event.source.postMessage) {
-          // Send acknowledgment back to auth domain
-          event.source.postMessage(
-            { type: 'auth-ack', nonce: message.nonce },
-            event.origin
-          );
-          console.log('📤 Acknowledgment sent to auth domain');
-        }
-      }
-    });
+const ack = Math.random().toString(36).slice(2);
 
-    console.log('🔄 Callback receiver ready, listening for auth messages...');
-  </script>
+/* Create hidden iframe */
+const iframe = document.createElement('iframe');
+iframe.style.display = 'none';
+iframe.src = RECEIVER_URL;
+document.body.appendChild(iframe);
+
+/* Listen for acknowledgment */
+window.addEventListener('message', (ev) => {
+  if (ev.origin !== B_ORIGIN) return;
+  const data = ev.data || {};
+  if (data.type === 'auth-ack') {
+    console.log('✅ ACK received from B');
+    // Redirect to B to show stored data
+    //window.location.href = 'y.hhtml';
+  }
+});
+
+/* Try sending message via iframe */
+iframe.addEventListener('load', () => {
+  try {
+    iframe.contentWindow.postMessage({ type: 'auth', ack: ack, userData, goto: goto }, B_ORIGIN);
+    console.log('📨 Message sent to B via iframe');
+  } catch (e) {
+    console.error('❌ postMessage failed:', e);
+    document.getElementById('manualSend').style.display = 'inline-block';
+  }
+});
+/* Manual fallback button (popup) */
+document.getElementById('manualSend').addEventListener('click', () => {
+  const popup = window.open(RECEIVER_URL, '_blank', 'width=600,height=500');
+  if (!popup) {
+    alert("⚠️ Popup blocked — allow popups for this site.");
+    return;
+  }
+  const sendInterval = setInterval(() => {
+    try {
+      popup.postMessage({ type: 'auth', ack: ack, userData }, B_ORIGIN);
+      console.log('📨 Message sent via manual popup');
+      clearInterval(sendInterval);
+    } catch {}
+  }, 500);
+});
+</script>
 </body>
 </html>
