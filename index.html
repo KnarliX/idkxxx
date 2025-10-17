@@ -12,25 +12,22 @@
     }
 
     body {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: #000;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-family: monospace;
       color: #fff;
     }
-
+    
     svg {
-      width: 100px;
-      height: 100px;
-      margin-bottom: 24px;
+      width: 60vw;
+      height: auto;
     }
-
-    .status-text {
-      font-size: 20px;
-      font-weight: 500;
+    .text {
+      font-size: 3.6vw;
     }
 
     .dot {
@@ -41,76 +38,54 @@
     .dot:nth-child(3) { animation-delay: 0.4s; }
 
     @keyframes dot {
-      0%, 60%, 100% { opacity: 0; }
+      0%, 60%, 100% { opacity: 0.2; }
       30% { opacity: 1; }
     }
   </style>
 </head>
 <body>
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-    <g stroke="#ffffff" stroke-width="2" fill="none">
-      <circle cx="50" cy="50" r="30" stroke="#ffffff" opacity="0.3" />
-      <circle cx="50" cy="50" r="40" stroke="#ffffff" opacity="0.15" />
-      
-      <path d="M10 50 A40 40 0 0 1 90 50" stroke="#ffffff" stroke-dasharray="10 10">
-        <animate attributeName="stroke-dashoffset" values="0;20" dur="0.8s" repeatCount="indefinite" />
-      </path>
-      
-      <path d="M10 50 A40 40 0 0 0 90 50" stroke="#ffffff" stroke-dasharray="10 10">
-        <animate attributeName="stroke-dashoffset" values="20;0" dur="0.8s" repeatCount="indefinite" />
-      </path>
-      
-      <circle cx="50" cy="50" r="0" stroke="#ffffff" stroke-width="2.5" fill="none">
-        <animate attributeName="r" values="0;40" dur="1.8s" repeatCount="indefinite" />
-        <animate attributeName="opacity" values="0.9;0" dur="1.8s" repeatCount="indefinite" />
+    <g stroke="#fff" stroke-width="2" fill="none">
+      <circle cx="50" cy="50" r="30" opacity="0.2" />
+      <circle cx="50" cy="50" r="0">
+        <animate attributeName="r" values="0;35" dur="1.5s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="0.8;0" dur="1.5s" repeatCount="indefinite" />
       </circle>
-      
-      <circle cx="50" cy="50" r="10" stroke="#ffffff" stroke-width="2.5" fill="none" opacity="0.5">
-        <animate attributeName="r" values="10;50" dur="1.8s" begin="0.9s" repeatCount="indefinite" />
-        <animate attributeName="opacity" values="0.7;0" dur="1.8s" begin="0.9s" repeatCount="indefinite" />
+      <circle cx="50" cy="50" r="5" opacity="0.8">
+        <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="1s" repeatCount="indefinite" />
       </circle>
-      
-      <g transform="translate(50,50)">
-        <circle r="6" stroke="#ffffff" stroke-width="2" fill="none" stroke-dasharray="10 8">
-          <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="1.6s" repeatCount="indefinite" />
-        </circle>
-        <circle r="2.5" fill="#ffffff" opacity="0.8">
-          <animate attributeName="opacity" values="0.8;0.3;0.8" dur="1.6s" repeatCount="indefinite" />
-        </circle>
-      </g>
     </g>
   </svg>
   
-  <div class="status-text">Authenticating<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></div>
+  <div class="text">Authenticating<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></div>
 
   <script>
-    const TRUSTED_AUTH_ORIGIN = 'https://ss-7bbbbbuu.pages.dev';
-    const STORAGE_KEY = 'login';
-    
+    const auth_origin = 'https://auth.example.com';
+    const STORAGE_KEY = 'login_data';
+    const errorpage = '/error?msg=';
     let dataReceived = false;
     
     const timeout = setTimeout(() => {
       if (!dataReceived) {
-        window.location.href = '/error?msg=' + encodeURIComponent('Authentication timeout - no data received');
+        window.location.href = errorpage + encodeURIComponent('Timeout: no data received');
       }
-    }, 3000);
+    }, 2900);
 
     function saveAuthData(data) {
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
         return true;
       } catch (error) {
-        console.error('Failed to save auth data:', error);
+        window.location.href = errorpage + encodeURIComponent('Failed to save data, please check your browser settings');
         return false;
       }
     }
 
     window.addEventListener('message', (ev) => {
-      if (ev.origin !== TRUSTED_AUTH_ORIGIN) {
-        return
-          window.location.href = '/error?msg=' + encodeURIComponent('data form unauthorise auth website (domain)');
+      if (ev.origin !== auth_origin) {
+        window.location.href = errorpage + encodeURIComponent('Unauthorized data source: authentication data from untrusted domain');
+        return;
       }
-
       const message = ev.data;
       
       if (message.type === 'auth' && message.userData && message.goto !== undefined && message.ack) {
@@ -119,7 +94,7 @@
         
         const saved = saveAuthData(message.userData);
         
-        if (saved && ev.source && ev.source.postMessage) {
+        if (ev.source && saved && ev.source.postMessage) {
           ev.source.postMessage(
             { type: 'auth-ack', ack: message.ack },
             ev.origin
