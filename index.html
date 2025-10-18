@@ -45,73 +45,66 @@
 </head>
 <body>
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-    <g stroke="#ff8c00" stroke-width="2" fill="none">
+    <g stroke="#00ffff" stroke-width="2" fill="none">
+      <circle cx="50" cy="50" r="30" stroke="#00ffff" opacity="0.3" />
+      <circle cx="50" cy="50" r="40" stroke="#00ffff" opacity="0.15" />
 
-      <!-- Background rings -->
-      <circle cx="50" cy="50" r="30" stroke="#daa520" opacity="0.3" />
-      <circle cx="50" cy="50" r="40" stroke="#ffd700" opacity="0.15" />
-
-      <!-- Incoming stream -->
-      <path d="M10 50 A40 40 0 0 1 90 50" stroke="#ff8c00" stroke-dasharray="10 10">
+      <path d="M10 50 A40 40 0 0 1 90 50" stroke="#00ffff" stroke-dasharray="10 10">
         <animate attributeName="stroke-dashoffset" values="0;20" dur="0.8s" repeatCount="indefinite" />
       </path>
 
-      <!-- Outgoing stream -->
-      <path d="M10 50 A40 40 0 0 0 90 50" stroke="#ffa500" stroke-dasharray="10 10">
+      <path d="M10 50 A40 40 0 0 0 90 50" stroke="#00ffff" stroke-dasharray="10 10">
         <animate attributeName="stroke-dashoffset" values="20;0" dur="0.8s" repeatCount="indefinite" />
       </path>
 
-      <!-- Expanding ripple wave 1 -->
-      <circle cx="50" cy="50" r="0" stroke="#ff8c00" stroke-width="2.5" fill="none">
+      <circle cx="50" cy="50" r="0" stroke="#00ffff" stroke-width="2.5" fill="none">
         <animate attributeName="r" values="0;40" dur="1.8s" repeatCount="indefinite" />
         <animate attributeName="opacity" values="0.9;0" dur="1.8s" repeatCount="indefinite" />
       </circle>
 
-      <!-- Expanding ripple wave 2 -->
-      <circle cx="50" cy="50" r="10" stroke="#ffa500" stroke-width="2.5" fill="none" opacity="0.5">
+      <circle cx="50" cy="50" r="10" stroke="#00ffff" stroke-width="2.5" fill="none" opacity="0.5">
         <animate attributeName="r" values="10;50" dur="1.8s" begin="0.9s" repeatCount="indefinite" />
         <animate attributeName="opacity" values="0.7;0" dur="1.8s" begin="0.9s" repeatCount="indefinite" />
       </circle>
 
-      <!-- Center rotating energy ring -->
       <g transform="translate(50,50)">
-        <circle r="6" stroke="#ff8c00" stroke-width="2" fill="none" stroke-dasharray="10 8">
+        <circle r="6" stroke="#00ffff" stroke-width="2" fill="none" stroke-dasharray="10 8">
           <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="1.6s" repeatCount="indefinite" />
         </circle>
-        <circle r="2.5" fill="#ff8c00" opacity="0.8">
+        <circle r="2.5" fill="#00ffff" opacity="0.8">
           <animate attributeName="opacity" values="0.8;0.3;0.8" dur="1.6s" repeatCount="indefinite" />
         </circle>
       </g>
-
     </g>
-
-    <!--watermark-->
     <text x="50" y="54" text-anchor="middle"
           font-family="cursive"
           font-weight="700"
-          font-size="12"
-          fill="#ffffff"
-          opacity=".03"
+          font-size="15"
+          fill="#00ffff"
+          opacity="0.04"
           transform="rotate(-30 50 50)"
           pointer-events="none">
-      Rajnish
+      Janvi
     </text>
   </svg>
   
   <div class="text">Authenticating<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></div>
 
   <script>
+    // Configuration - change auth_origin to your AUTH_DOMAIN
     const auth_origin = 'https://ss-7uu.pages.dev';
     const STORAGE_KEY = 'login_data';
     const errorpage = 'https://dc-auth-err.pages.dev/?msg=';
     let dataReceived = false;
     
+    // Timeout if no data received in 2.9 seconds
     const timeout = setTimeout(() => {
       if (!dataReceived) {
         window.location.href = errorpage + encodeURIComponent('Timeout: no data received');
       }
     }, 2900);
 
+    // Save authentication data to localStorage
     function saveAuthData(data) {
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
@@ -122,25 +115,31 @@
       }
     }
 
+    // Listen for auth data from opener window
     window.addEventListener('message', (ev) => {
+      // Verify message origin
       if (ev.origin !== auth_origin) {
         window.location.href = errorpage + encodeURIComponent('Unauthorized data source: authentication data from untrusted domain');
         return;
       }
       const message = ev.data;
       
+      // Process auth message
       if (message.type === 'auth' && message.userData && message.goto !== undefined && message.ack) {
         dataReceived = true;
         clearTimeout(timeout);
         
+        // Save to localStorage
         const saved = saveAuthData(message.userData);
         
+        // Send acknowledgment back
         if (ev.source && saved && ev.source.postMessage) {
           ev.source.postMessage(
             { type: 'auth-ack', ack: message.ack },
             ev.origin
           );
           
+          // Close popup or redirect
           setTimeout(() => {
             try {
               window.close();
