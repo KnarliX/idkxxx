@@ -1,0 +1,65 @@
+[
+  {
+    "id": "web_verify",
+    "name": "Verify on website",
+    "icon": "BookCheck",
+    "defaultlang": "en",
+    "lang": [
+      {
+        "id": "en",
+        "name": "English",
+        "location": "/cdn/guide/en/web-verify.md"
+      },
+      {
+        "id": "hi",
+        "name": "Hindi",
+        "location": "https://raw.githubusercontent.com/KnarliX/idkxxx/refs/heads/main/web-verify.md"
+      },
+      {
+        "id": "maith",
+        "name": "Maithili",
+        "location": "/cdn/guide/maith/web-verify.md"
+      }
+    ]
+  },
+  {
+    "id": "cmd_verify",
+    "name": "Verify using CMD",
+    "defaultlang": "en",
+    "lang": [
+      {
+        "id": "en",
+        "name": "English",
+        "location": "/cdn/guide/en/verify-cmd.md"
+      },
+      {
+        "id": "hi",
+        "name": "Hindi",
+        "location": "/cdn/guide/hi/verify-cmd.md"
+      }
+    ]
+  },
+  {
+    "id": "dlt",
+    "name": "delete data",
+    "icon": "Trash",
+    "defaultlang": "maith",
+    "lang": [
+      {
+        "id": "en",
+        "name": "English",
+        "location": "/cdn/guide/en/data-dlt.md"
+      },
+      {
+        "id": "hi",
+        "name": "Hindi",
+        "location": "/cdn/guide/hi/data-dlt.md"
+      },
+      {
+        "id": "maith",
+        "name": "Maithili",
+        "location": "/cdn/guide/maith/data-dlt.md"
+      }
+    ]
+  }
+]
